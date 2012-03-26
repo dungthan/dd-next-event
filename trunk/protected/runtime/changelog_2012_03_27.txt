@@ -1,0 +1,8 @@
+﻿1. Feature: Edit Configuration
+2. Modify Files:
+	index.php => Change Framework Directory
+	protected/yiic.php Change Framework Directory
+	database => create to store Database of Project
+	
+3. User: Du Dan
+	
