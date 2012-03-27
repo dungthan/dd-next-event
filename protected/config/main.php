@@ -53,7 +53,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=event02',
+			'connectionString' => 'mysql:host=localhost;dbname=events',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
@@ -85,6 +85,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'vandung.coltech@gmail.com',
+		'adminEmail'=>'group02@bodd.biz',
 	),
 );

@@ -1,0 +1,6 @@
+﻿1. Feature: Edit Configuration
+2. Modify Files:
+	add Framework Folder to Project (/framework)
+	protected/config/main.php Change Database Name(Change to events) + Admin Email (Change to group02@bodd.biz)
+3. User: Du Dan
+	
