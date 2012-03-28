@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * This is the model class for table "tbl_user".
@@ -27,8 +27,8 @@
  */
 class User extends CActiveRecord
 {
-        public $password_repeat;
-        public $verifyCode;
+		public $password_repeat;
+		public $verifyCode;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -59,13 +59,14 @@ class User extends CActiveRecord
 		        array('password_repeat','safe'),
 		        array('verifyCode', 'safe'),
 		        array('password','compare'),
+				array('email', 'email'),
 			array('username, password, email, password_repeat', 'required', 'on'=>'register'),
 			array('block, activation', 'numerical', 'integerOnly'=>true),
 			array('username, password, email, last_login_IP', 'length', 'max'=>255),
-			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, username, password, email, block, activation, last_login_IP, last_login_time, create_time', 'safe', 'on'=>'search'),
+			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 		);
 	}
 
@@ -86,6 +87,7 @@ class User extends CActiveRecord
 			'likeStatus' => array(self::HAS_MANY, 'LikeStatu', 'user_id'),
 			'mes' => array(self::HAS_MANY, 'Me', 'user_id'),
 			'userprofiles' => array(self::HAS_ONE, 'Userprofiles', 'user_id'),
+			'videos' => array(self::HAS_MANY, 'Video', 'create_user_id'),
 		);
 	}
 

@@ -40,6 +40,8 @@
 				array('label'=>"New Event", 'url'=>array('/event/newevent')),
 				array('label'=>"Top Event", 'url'=>array('/event/topevent')),
 				array('label'=>"Hot Event", 'url'=>array('/event/hotevent')),
+				array('label'=>"Create Video", 'url'=>array('/video/create')),
+				array('label'=>"My Video", 'url'=>array('/video/video', 'id'=>Yii::app()->user->id)),
 			),
 		)); ?>
 	</div><!-- mainmenu -->

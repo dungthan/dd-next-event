@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class UserController extends Controller
 {
