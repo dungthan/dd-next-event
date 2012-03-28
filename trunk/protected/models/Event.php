@@ -143,7 +143,6 @@ class Event extends TimeEvent
         $TypeArray = CHtml::listData(Typeevent::model()->findAll(array('order' => 'name')), 'id', 'name');
 
         return $TypeArray;
-        
     }
     
     public function CensorOptions()
