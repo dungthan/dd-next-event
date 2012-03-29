@@ -1,0 +1,5 @@
+﻿database có 1 số thay đổi như sau. 
+	1. inset vào bảng tbl_typevideo.
+	2. trong bảng tbl_video xóa field thumbnail đi thay vào đó là field permission
+	3. bảng tbl_friend sửa kiểu của req_user1 and req_user2 đều là Set
+	4. insert vòa bảng tbl_user 2 acc admin và demo2 pass là 123456

@@ -36,12 +36,12 @@
 				array('label'=>"Tường", 'url'=>array('/me/me', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"Create Event", 'url'=>array('/event/create'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"Event", 'url'=>array('/event/index')),
-				array('label'=>'bạn bè', 'url'=>array('friend/friend', 'id'=>Yii::app()->user->id)),
+				array('label'=>'bạn bè', 'url'=>array('friend/friend', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"New Event", 'url'=>array('/event/newevent')),
 				array('label'=>"Top Event", 'url'=>array('/event/topevent')),
 				array('label'=>"Hot Event", 'url'=>array('/event/hotevent')),
-				array('label'=>"Create Video", 'url'=>array('/video/create')),
-				array('label'=>"My Video", 'url'=>array('/video/video', 'id'=>Yii::app()->user->id)),
+				array('label'=>"Create Video", 'url'=>array('/video/create'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>"My Video", 'url'=>array('/video/video', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
 			),
 		)); ?>
 	</div><!-- mainmenu -->
