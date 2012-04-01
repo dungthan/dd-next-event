@@ -27,11 +27,11 @@ class FriendController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','friend'),
+				'actions'=>array('index','view','friend','searchfriend'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','friend','delete'),
+				'actions'=>array('create','update','friend','delete','search'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -197,4 +197,16 @@ class FriendController extends Controller
 		}
 	}
     
+       	public function actionSearchFriend()
+	{
+	   
+        
+		$model = new User('search');
+		$model->unsetattributes();
+		if (isset($_GET['User']))
+		{
+			$model->attributes=$_GET['User'];
+			$this->render('searchfriend', array('model'=>$model));
+		}
+	}
 }

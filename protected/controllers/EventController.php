@@ -31,7 +31,7 @@ class EventController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','thumbnail'),
+				'actions'=>array('create','update','thumbnail','totalpost'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -192,12 +192,52 @@ class EventController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Event');
+		$dataProvider=new CActiveDataProvider('Event',array(
+            'criteria'=>array(
+                'condition'=>"censor = 0",
+                'order'=>'create_time DESC',
+            ),
+        ));
+        $dataProviderCensor = new CActiveDataProvider('Event',array(
+            'criteria'=>array(
+                'condition'=>"censor= 1",
+                'order'=>'create_time DESC',
+            ),
+        ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+            'dataProviderCensor'=>$dataProviderCensor,
 		));
 	}
-
+    /**
+     * list event had ever posted by user  
+     */
+	public function actionTotalPost()
+    {
+        $NameUser = Yii::app()->user->name;
+        $IdUser = Yii::app()->db->createCommand("SELECT id FROM tbl_user WHERE username ='".$NameUser."'")->queryScalar();
+         
+        $dataProvider=new CActiveDataProvider('Event', array(
+            'criteria'=>array(
+                'condition'=>'create_user_id=:Iduser and censor=0',
+                'params'=>array(':Iduser'=>$IdUser),
+                'order'=>'create_time DESC'
+                ),
+             'pagination'=> array('pageSize'=>5,),  
+                ));
+        $dataProviderCensor=new CActiveDataProvider('Event', array(
+            'criteria'=>array(
+                'condition'=>'create_user_id=:Iduser  and censor=1',
+                'params'=>array(':Iduser'=>$IdUser),
+                'order'=>'create_time DESC'
+                ),
+             'pagination'=> array('pageSize'=>5,),  
+                ));
+        $this->render('totalPost',array(
+           'dataProvider'=>$dataProvider,
+           'dataProviderCensor'=>$dataProviderCensor,
+        ));
+    }
 	/**
 	 * Manages all models.
 	 */

@@ -9,9 +9,21 @@ $this->menu=array(
 );
 ?>
 
-<h1>Events</h1>
+<?php
+if(Yii::app()->user->name== 'admin'){
 
-<?php $this->widget('zii.widgets.CListView', array(
+ echo "<h1>Event chưa kiểm duyệt</h1>";
+
+ $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
+	'itemView'=>'_view',
+)); 
+ }
+?>
+
+
+<h1>Event đã kiểm duyệt</h1>
+<?php $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>$dataProviderCensor,
 	'itemView'=>'_view',
 )); ?>
