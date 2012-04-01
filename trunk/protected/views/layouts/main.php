@@ -35,7 +35,7 @@
 				array('label'=>"Đăng ký", 'url'=>array('/user/create'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>"Tường", 'url'=>array('/me/me', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"Create Event", 'url'=>array('/event/create'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>"Event", 'url'=>array('/event/index')),
+				array('label'=>"Total Event", 'url'=>array('/event/totalpost')),
 				array('label'=>'bạn bè', 'url'=>array('friend/friend', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"New Event", 'url'=>array('/event/newevent')),
 				array('label'=>"Top Event", 'url'=>array('/event/topevent')),

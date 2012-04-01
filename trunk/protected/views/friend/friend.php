@@ -10,7 +10,7 @@ $this->menu=array(
 );
 ?>
 
-
+<?php $this->widget("application.components.SearchFriend");?>
 <?php 
  if ($CountRequest!= 0) {
     echo "<h1>Danh sach nguoi gui yeu cau ket ban</h1>";
