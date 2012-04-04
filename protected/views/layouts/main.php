@@ -34,6 +34,7 @@
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"Đăng ký", 'url'=>array('/user/create'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>"Tường", 'url'=>array('/me/me', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>"Profiles", 'url'=>array('/userprofiles/view', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"Create Event", 'url'=>array('/event/create'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"Total Event", 'url'=>array('/event/totalpost')),
 				array('label'=>'bạn bè', 'url'=>array('friend/friend', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
