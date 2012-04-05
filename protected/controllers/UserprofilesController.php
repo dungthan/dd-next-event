@@ -31,15 +31,15 @@ class UserprofilesController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('view','create','update','avatar'),
+				'actions'=>array(,'update','avatar','displayprofile'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('view','admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
-				'users'=>array('*'),
+				'users'=>array('@'),
 			),
 		);
 	}
@@ -50,22 +50,30 @@ class UserprofilesController extends Controller
 	 */
 	public function actionView($id)
 	{
-	        if (Yii::app()->user->id !==null) {
+	        //$id = Yii::app()->user->id ;
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-		));}
-		else {
-		        $this->redirect(array('/site/login'));
-		}
+        ));
 	}
 
+	/**
+	 * Displays User Profile 
+	 * 
+	 */
+	public function actionDisplayprofile()
+	{
+	        $id = Yii::app()->user->id ;
+		$this->render('displayprofile',array(
+			'model'=>$this->loadModel($id),
+        ));
+	}
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+/*	public function actionCreate()
 	{
-                if (Yii::app()->user->id === $_GET['id']){
+               // if (Yii::app()->user->id === $_GET['id']){
 		        $model=new Userprofiles;
 
 		        // Uncomment the following line if AJAX validation is needed
@@ -77,32 +85,32 @@ class UserprofilesController extends Controller
 			        if($model->save())
 				        $this->redirect(array('avatar','id'=>$model->user_id));
 		        }
-
 		        $this->render('create',array(
 			        'model'=>$model,
 		        ));
-		}else echo "bạn không có đủ khả năng để thay đổi";
-	}
+	//	}else echo "bạn không có đủ khả năng để thay đổi";
+	} */
         
-        public function actionAvatar ($id)
+        public function actionAvatar()
         {
-                if (Yii::app()->user->id === $_GET['id']){
-                        $model = $this->loadModel($id);
-                        $model->setScenario('avatar');
-                        if (isset($_POST['Userprofiles']))
-                        {
-                                $model->attributes = $_POST['Userprofiles'];
-                                $model->avatar = CUploadedFile::getInstance($model,'avatar');
-                                if ($model->save())
-                                {
-                                        $name = $model->avatar;
-                                        $path = YiiBase::getPathOfAlias('webroot').'/avatar/';
-                                        $model->avatar->saveAs($path.$name);
-                                        $this->redirect(Yii::app()->homeUrl);
-                                }
-                        }
-                        $this->render('avatar',array('model'=>$model));
-                }else echo "Bạn không có đủ khả năng thực hiện";
+                $id = Yii::app()->user->id;
+                $model = $this->loadModel($id);
+                $model->setScenario('avatar');
+                if (isset($_POST['Userprofiles']))
+                 {
+                    $model->attributes = $_POST['Userprofiles'];
+                    $model->avatar = CUploadedFile::getInstance($model,'avatar');
+                    if ($model->save())
+                    {
+                      echo "da save" ;
+                      $name = $model->avatar;
+                      $path = YiiBase::getPathOfAlias('webroot').'/avatar/';
+                      $model->avatar->saveAs($path.$name);
+                      $this->redirect(Yii::app()->homeUrl);
+                     }
+                  }
+                $this->render('avatar',array('model'=>$model));
+               
         }
 	/**
 	 * Updates a particular model.
@@ -120,7 +128,7 @@ class UserprofilesController extends Controller
 		{
 			$model->attributes=$_POST['Userprofiles'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->user_id));
+				 $this->redirect(array('avatar'));
 		}
 
 		$this->render('update',array(

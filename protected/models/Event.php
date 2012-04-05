@@ -161,7 +161,7 @@ class Event extends TimeEvent
     
     public function checkLike ($id, $_id)
     {
-        $model = Like::model()->findByAttributes (array('event_id'=>$id, 'user_id'=>$_id));
+        $model = Like::model()->findByAttributes(array('event_id'=>$id, 'user_id'=>$_id));
         if ($model !== null)
                 return true;
         else

@@ -7,7 +7,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Userprofiles', 'url'=>array('index')),
-	array('label'=>'Create Userprofiles', 'url'=>array('create')),
 	array('label'=>'View Userprofiles', 'url'=>array('view', 'id'=>$model->user_id)),
 	array('label'=>'Manage Userprofiles', 'url'=>array('admin')),
 );

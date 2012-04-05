@@ -77,7 +77,6 @@ class EventController extends Controller
                        }
                         
                 }
-        // $model->setScenario('_censor');
                 
 		if(isset($_POST['Event']))
 		{
