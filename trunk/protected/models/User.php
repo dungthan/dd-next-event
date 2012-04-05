@@ -29,6 +29,7 @@ class User extends CActiveRecord
 {
 		public $password_repeat;
 		public $verifyCode;
+        public $oldPassword;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -56,17 +57,19 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 		        array('username, email','unique'),
-		        array('password_repeat','safe'),
-		        array('verifyCode', 'safe'),
-		        array('password','compare'),
+		        array('password_repeat,verifyCode','safe'),
 				array('email', 'email'),
-			array('username, password, email, password_repeat', 'required', 'on'=>'register'),
-			array('block, activation', 'numerical', 'integerOnly'=>true),
-			array('username, password, email, last_login_IP', 'length', 'max'=>255),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, username, password, email, block, activation, last_login_IP, last_login_time, create_time', 'safe', 'on'=>'search'),
-			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
+                array('password','match', 'pattern'=>'#^[0-9A-Za-z]+$#', 'message'=>'Only the following characters are allowed: 0-9 A-Z a-z', 'on'=>'update' ),
+                array('password','length','max'=>25, 'on'=>'update'),   // PW only 20 Chars
+                array('password','length','min'=>6, 'on'=>'update'),    // PW min 6 Chars
+                array('password','compare', 'on'=>'update'),            //  -> PASSWORD REPEAT
+                array('password_repeat','safe', 'on'=>'update'),        //  -> PASSWORD REPEAT
+    			array('username, password, email, password_repeat', 'required', 'on'=>'register'),
+    			array('block, activation', 'numerical', 'integerOnly'=>true),
+    			array('username, password, email,oldPassword', 'length', 'max'=>255),
+    			// The following rule is used by search().
+    			// Please remove those attributes that should not be searched.
+    			array('id, username, password, email, block, activation, last_login_IP, last_login_time, create_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -135,15 +138,58 @@ class User extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
+	protected function beforeValidate()
+    {   		
+		if($this->isNewRecord)
+		{
+            $this->create_time= $this->last_login_time=$this->update_time=new CDbExpression('NOW()');
+            
+            
+        }
+		else
+		{   
+	       	$this->update_time=new CDbExpression('NOW()');
+			
+		}		
+		return parent::beforeValidate();
+	}	
 	protected function afterValidate ()
 	{
 	        parent::afterValidate();
-	        $this->password = $this->MD5P($this->password);
+	        $this->password = $this->MD5P($this->password);  
+             
 	}
 	
 	public function MD5P ($value)
 	{
 	        return MD5($value);
 	}
+    
+    public function USERID($id){
+        return $id;
+    }
+    
+    public function insertSecurity($id,$userid,$userprofile,$myvideo,$friend){
+        $sql = "INSERT INTO tbl_security (id,user_id,userprofile,myvideo,friend)
+                VALUES (:Id,:UserId, :UserProfile, :MyVideo, :Friend)";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindValue(":Id",$userid,PDO::PARAM_INT);
+        $command->bindValue(":UserId",$userid,PDO::PARAM_INT);
+        $command->bindValue(":UserProfile",$userprofile ,PDO::PARAM_INT);
+        $command->bindValue(":MyVideo",$myvideo,PDO::PARAM_INT);
+        $command->bindValue(":Friend",$friend,PDO::PARAM_INT);
+        return $command->execute() ;
+    }
+    
+    public function insertUserProfile($userid,$displayname){
+        $sql = "INSERT INTO tbl_userprofiles (user_id,display_name,first_name,last_name,company,lang,bio,bod,gender,phone,mobile,
+                address_line1,address_line2,address_line3,yim_handle,skype_handle,avatar,facebooksite,update_on)
+                VALUES (:UserId,:DisplayName,'unknown','unknown','unknown','Việt Nam','unknown','0-0-0','unknown','unknown','unknown',
+                        'unknown','unknown','unknown','unknown','unknown','unknown','unknown',0)";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindValue(":UserId",$userid,PDO::PARAM_INT);
+        $command->bindValue(":DisplayName",$displayname ,PDO::PARAM_STR);
+        return $command->execute() ;
+    }
 }

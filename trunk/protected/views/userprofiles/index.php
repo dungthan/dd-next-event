@@ -4,8 +4,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Userprofiles', 'url'=>array('create')),
+	array('label'=>'displayprofile', 'url'=>array('displayprofile')),
 	array('label'=>'Manage Userprofiles', 'url'=>array('admin')),
+    array('label'=>'Avatar', 'url'=>array('avatar')),
 );
 ?>
 

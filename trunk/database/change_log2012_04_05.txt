@@ -1,0 +1,10 @@
+1 create 1 table tbl_security has field : id |user_id |userprofile |myvideo |friend
+2 delete AUTO_INCREMENT in tbl_userprofiles 
+3 change all, don't everithing :D
+
+--->> update code new : ok
+
+tuans
+
+
+

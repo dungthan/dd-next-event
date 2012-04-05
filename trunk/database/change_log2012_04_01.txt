@@ -1,0 +1,9 @@
+﻿1. add 1 field
+   tbl_video permission set ('tôi','bạn bè','mọi người') . 
+   
+2. create typeVideo model and CRUD for Gii
+3. add search friend in friend/friend 
+4. change EventController/index and add actionTotalPost in Controller
+
+
+Tuaans

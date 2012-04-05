@@ -49,7 +49,7 @@ $this->endWidget();
 ?>
 
             <li>
-                <img width='250' height='175' src ="<?php if ($model!=null AND $model->thumbnail!=null) { echo Yii::app()->request->baseUrl;?>/images/thumbnail/<?php echo $model->thumbnail;} else echo Yii::app()->request->baseUrl."/images/thumbnail/noavatar.gif";?>" />
+                <img width='250' height='175' src ="<?php if ($model!=null AND $model->thumbnail!=null) { echo Yii::app()->request->baseUrl;?>/images/thumbnail/<?php echo $model->thumbnail;} else echo Yii::app()->request->baseUrl."/images/thumbnail/no_thumbnail.jpg";?>" />
             </li>
      
 <?//php endif ; ?>

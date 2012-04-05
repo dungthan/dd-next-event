@@ -42,11 +42,11 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('captcha','create','index','view','search'),
+				'actions'=>array('captcha','register','index','view','search'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update','search'),
+				'actions'=>array('update','search','changepass'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -80,14 +80,14 @@ class UserController extends Controller
         if(isset($_POST['Friend']))
 		{
             if($CountRequest!= 0){ // check when user reload page not create new rational 
-               Yii::app()->user->setFlash('success',"<b>Mạng cùi bắp quá :)).<b/>");
+               Yii::app()->user->setFlash('success',"<b>Máº¡ng cÃ¹i báº¯p quÃ¡ :)).<b/>");
             }else{
     			$Friends->attributes=$_POST['Friend'];
     			if($Friends->save())
                 {
-    			 Yii::app()->user->setFlash('success',"<b>Bạn đã gửi một yêu cầu kết bạn.<b/>");
+    			 Yii::app()->user->setFlash('success',"<b>Báº¡n Ä‘Ã£ gá»­i má»™t yÃªu cáº§u káº¿t báº¡n.<b/>");
     			}else{
-    			 Yii::app()->user->setFlash('error',"<b>Yêu cầu thất bại.<b/>");
+    			 Yii::app()->user->setFlash('error',"<b>YÃªu cáº§u tháº¥t báº¡i.<b/>");
     			}
             }
 		}
@@ -106,34 +106,38 @@ class UserController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionRegister()
 	{
 		$model=new User;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-                $model->setScenario('register');
+        $model->setScenario('register');
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
 			$temp = $model->password;
 			if($model->save())
 			{
-			        $identity = new UserIdentity ($model->username, $temp);
+                    $User = new User;
+                    $User->insertSecurity($model->id,$model->id,0,0,0); // insert tbl_seccurity
+                    $User->insertUserProfile($model->id,$model->username,new CDbExpression('NOW()'));
+			        $identity = new UserIdentity($model->username, $temp);
 			        $identity->authenticate();
 			        if ($identity->errorCode == UserIdentity::ERROR_NONE)
 			        {
 			                $duration = 3600*24*30;
 			                Yii::app()->user->login($identity, $duration);
-			                $this->redirect(array('userprofiles/create', 'id'=>$model->id));
+			                $this->redirect(array('userprofiles/update', 'id'=>$model->id));
 			        }
 			}
 		}
 
-		$this->render('create',array(
+		$this->render('register',array(
 			'model'=>$model,
 		));
 	}
+    
 
 	/**
 	 * Updates a particular model.
@@ -237,14 +241,14 @@ class UserController extends Controller
      * */
 
  public function actionChangePass() 
-        {       
+        {                  
                 $id = Yii::app()->user->id ;
                 $model = $this->loadModel($id);
+                $model->unsetAttributes() ;
                 $this->performAjaxValidation($model);
                 $new_password = User::model()->findByPk(Yii::app()->user->id);
                 $old_password = $new_password->MD5P($model->oldPassword);
-                $model->oldPassword = $model->password_repeat = $model->password = '';
-                
+                                
                 if(isset($_POST['User']))
             		{
             			$model->attributes=$_POST['User'];
@@ -253,16 +257,15 @@ class UserController extends Controller
                         if($new_password->password != $old_password)
                         {
                             $model->addError('oldPassword', "<b>You've enterd wrong old password.<b/>");
-                            $model->oldPassword = $model->password_repeat = $model->password = '';
+                            $model->unsetAttributes();
                         }else{
                 			if($model->save())
                             {
-                			    Yii::app()->user->setFlash('success',"<b>Password c?a b?n d� du?c luu th�nh c�ng.<b/>");
+                			    Yii::app()->user->setFlash('success',"<b>Password đã lưu thành công.<b/>");
                 				$this->redirect(array('view','id'=>$model->id));
                             }else
-                            {
-                                Yii::app()->user->setFlash('fail',"<b>Password nh?p v�o kh�ng d�ng. Vui l�ng th? l?i .<b/>");
-                                $model->oldPassword = $model->password_repeat = $model->password = ''; 
+                            { 
+                                Yii::app()->user->setFlash('fail',"<b>Password nhập vào không dúng. Vui lòng thử lại .<b/>");
                             }
                         }
             		}

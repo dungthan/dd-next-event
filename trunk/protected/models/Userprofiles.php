@@ -59,8 +59,9 @@ class Userprofiles extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('display_name, first_name, last_name, company, bio, bod, gender, phone, address_line1 yim_handle,', 'required'),
-			array('display_name, first_name, last_name, company, lang, address_line1, address_line2, address_line3, yim_handle, skype_handle, avatar, facebooksite', 'length', 'max'=>255),
+			array('display_name, avatar, first_name, last_name, company, lang, address_line1, address_line2, address_line3, yim_handle, skype_handle, avatar, facebooksite', 'length', 'max'=>255),
 			array('phone, mobile', 'length', 'max'=>20),
+            array('avatar','required','on'=>'avatar'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('avatar','file','types'=>'jpg,png,gif','allowEmpty'=>true),

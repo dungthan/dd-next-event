@@ -161,9 +161,6 @@ class FriendController extends Controller
         $CountRequest = Yii::app()->db->createCommand("SELECT COUNT(*) FROM tbl_friend WHERE  user2_id = '".$UserId2."'  AND request = 0")->queryScalar();
         $CountRequest1 = Yii::app()->db->createCommand("SELECT COUNT(*) FROM tbl_friend WHERE  user1_id = '".$UserId2."'  AND request = 1")->queryScalar();
         $CountRequest2 = Yii::app()->db->createCommand("SELECT COUNT(*) FROM tbl_friend WHERE  user2_id = '".$UserId2."'  AND request = 1")->queryScalar();
-        
-        //
-
 		$this->render('friend',array(
 		//	'model'=>$model,
             'CountRequest'=>$CountRequest,
@@ -198,9 +195,7 @@ class FriendController extends Controller
 	}
     
        	public function actionSearchFriend()
-	{
-	   
-        
+	{    
 		$model = new User('search');
 		$model->unsetattributes();
 		if (isset($_GET['User']))

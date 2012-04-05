@@ -21,7 +21,6 @@ if(Yii::app()->user->name== 'admin'){
  }
 ?>
 
-
 <h1>Event đã kiểm duyệt</h1>
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProviderCensor,
