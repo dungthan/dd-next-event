@@ -12,6 +12,7 @@ $this->menu=array(
 	array('label'=>'Delete Userprofiles', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->user_id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Userprofiles', 'url'=>array('admin')),
 	array('label'=>'friend', 'url'=>array('/friend/friend','id'=>$model->user_id)),
+    array('label'=>'displayprofile', 'url'=>array('displayprofile','id'=>$model->user_id)),
 );
 ?>
 
