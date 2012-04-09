@@ -60,9 +60,9 @@ class UserprofilesController extends Controller
 	 * Displays User Profile 
 	 * 
 	 */
-	public function actionDisplayprofile()
+	public function actionDisplayprofile($id)
 	{
-	        $id = Yii::app()->user->id ;
+	   // $id = Yii::app()->user->id;
 		$this->render('displayprofile',array(
 			'model'=>$this->loadModel($id),
         ));

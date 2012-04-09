@@ -9665,3 +9665,43 @@ Stack trace:
 REQUEST_URI=/Yii_FrameWord/next-events/index.php?r=user/view&id=2
 HTTP_REFERER=http://localhost/Yii_FrameWord/next-events/index.php?r=user/index
 ---
+2012/04/09 18:10:10 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php:337
+Stack trace:
+#0 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(292): CFilterChain->run()
+#7 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CWebApplication.php(276): CController->run('displayprofile')
+#9 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CWebApplication.php(135): CWebApplication->runController('userprofiles/di...')
+#10 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 D:\xampp\htdocs\Yii_FrameWord\next-events\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/Yii_FrameWord/next-events/index.php?r=userprofiles/displayprofile
+HTTP_REFERER=http://localhost/Yii_FrameWord/next-events/index.php?r=userprofiles/index
+---
+2012/04/09 18:11:10 [error] [php] Undefined variable: model (D:\xampp\htdocs\Yii_FrameWord\next-events\protected\views\userprofiles\index.php:7)
+Stack trace:
+#0 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(870): UserprofilesController->renderFile()
+#1 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(783): UserprofilesController->renderPartial()
+#2 D:\xampp\htdocs\Yii_FrameWord\next-events\protected\controllers\UserprofilesController.php(167): UserprofilesController->render()
+#3 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\actions\CInlineAction.php(50): UserprofilesController->actionIndex()
+#4 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\filters\CFilterChain.php(134): UserprofilesController->runAction()
+#6 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\filters\CInlineFilter.php(59): UserprofilesController->filterAccessControl()
+#9 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(292): CFilterChain->run()
+#11 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CController.php(266): UserprofilesController->runActionWithFilters()
+#12 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CWebApplication.php(276): UserprofilesController->run()
+#13 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#14 D:\xampp\htdocs\Yii_FrameWord\next-events\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\Yii_FrameWord\next-events\index.php(13): CWebApplication->run()
+REQUEST_URI=/Yii_FrameWord/next-events/index.php?r=userprofiles/index
+in D:\xampp\htdocs\Yii_FrameWord\next-events\protected\views\userprofiles\index.php (7)
+in D:\xampp\htdocs\Yii_FrameWord\next-events\protected\controllers\UserprofilesController.php (167)
+in D:\xampp\htdocs\Yii_FrameWord\next-events\index.php (13)
