@@ -27,39 +27,39 @@ $this->menu=array(
     <div class="flash-success">
         <?php echo Yii::app()->user->getFlash('success'); ?>
     </div>      
-<?php else :?>
-<?php if(Yii::app()->user->hasFlash('error')):?>
-<div class="flash-success">
-        <?php echo Yii::app()->user->getFlash('error'); ?>
-</div>  
-<?php else :?>
-<!----Compare  user , and whow button friend  , Yes or No ^^ mr.richdad----->
-<?php 
-
+<?php else :
+        if(Yii::app()->user->hasFlash('error')):?>
+            <div class="flash-success">
+         <?php echo Yii::app()->user->getFlash('error'); ?>
+            </div>  
+<?php else :
+// check user login? Compare user , and whow button friend  , Yes or No ^^ mr.richdad
 if ($CountRequest == 0 ){
-    if(Yii::app()->user->id != $model->id and $CountRequest1 == 0 ) {
-?>
-<div class="buttons">
+    if(Yii::app()->user->id != $model->id and $CountRequest1 == 0 and $modelUser->block == 1 ) {
+        ?>
+        <div class="buttons">
+        <?php 
+        $form=$this->beginWidget('CActiveForm', array(
+        	'id'=>'friend-form',
+        	'enableAjaxValidation'=>false,
+        )); 
+            echo $form->hiddenField($Friends,'user1_id');
+            echo $form->hiddenField($Friends,'user2_id');
+            echo CHtml::submitButton($Friends->isNewRecord ? 'Kết Bạn' : 'Kết Bạn');
+        
+         $this->endWidget();
+        ?>
+        </div>
+<?php  
+    } 
+ } 
+
+ endif ; 
+ endif ;
+?><!------END IF----->
+<!--SHOW ---->
 <?php 
-$form=$this->beginWidget('CActiveForm', array(
-	'id'=>'friend-form',
-	'enableAjaxValidation'=>false,
-)); 
-    echo $form->hiddenField($Friends,'user1_id');
-    echo $form->hiddenField($Friends,'user2_id');
-    echo CHtml::submitButton($Friends->isNewRecord ? 'Kết Bạn' : 'Kết Bạn');
-
- $this->endWidget();
-?>
-</div>
-
-<?php  }  } ?>
-
-<?php endif ; ?>
-<?php endif ;?><!------END IF----->
-
-<?php 
-if(Yii::app()->user->id != $model->id){if( $CountRequest != 0 ) echo "<h1>Chưa Xác Nhận</h1>" ;}
+if(Yii::app()->user->id != $model->id){if( $CountRequest != 0 ) echo "<h1>Đợi Xác Nhận</h1>" ;}
 if($StatusFriend==1) echo "<h1>Bạn Bè</h1>" ;
 if($StatusFriend==2) echo "<h1>Bạn Thân<h1/>" ;
 if($StatusFriend==3) echo "<h1>Gia Đình<h1/>" ;

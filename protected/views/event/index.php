@@ -10,7 +10,7 @@ $this->menu=array(
 ?>
 
 <?php
-if(Yii::app()->user->name== 'admin'){
+//if(Yii::app()->user->name== 'admin'){
 
  echo "<h1>Event chưa kiểm duyệt</h1>";
 
@@ -18,7 +18,7 @@ if(Yii::app()->user->name== 'admin'){
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); 
- }
+ //}
 ?>
 
 <h1>Event đã kiểm duyệt</h1>

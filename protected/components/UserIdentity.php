@@ -21,12 +21,21 @@ class UserIdentity extends CUserIdentity
 		$user=User::model()->findByAttributes(array('username'=>$this->username));
 		if ($user == NULL)
 		        $this->errorCode=self::ERROR_USERNAME_INVALID;
-		else if ($user->password !== $user->MD5P($this->password))
+		else 
+            if ($user->password !== $user->MD5P($this->password))
 		        $this->errorCode=self::ERROR_PASSWORD_INVALID;
-		        else
+            else
 		        {
-		                $this->_id = $user->id;
-		                $this->errorCode=self::ERROR_NONE;
+	                $this->_id = $user->id;
+	                $this->errorCode=self::ERROR_NONE;
+                    if(null===$user->last_login_time)                	{
+        				$lastLogin = time();
+        			}
+                	else                	{
+        				$lastLogin = strtotime($user->last_login_time);
+        			}
+                	$this->setState('lastLoginTime', $lastLogin);
+                    $this->errorCode=self::ERROR_NONE;
 		        }
 		return !$this->errorCode;
 	}

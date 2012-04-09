@@ -144,13 +144,10 @@ class User extends CActiveRecord
 		if($this->isNewRecord)
 		{
             $this->create_time= $this->last_login_time=$this->update_time=new CDbExpression('NOW()');
-            
-            
         }
 		else
 		{   
-	       	$this->update_time=new CDbExpression('NOW()');
-			
+	       	$this->update_time=new CDbExpression('NOW()');			
 		}		
 		return parent::beforeValidate();
 	}	
@@ -158,7 +155,6 @@ class User extends CActiveRecord
 	{
 	        parent::afterValidate();
 	        $this->password = $this->MD5P($this->password);  
-             
 	}
 	
 	public function MD5P ($value)

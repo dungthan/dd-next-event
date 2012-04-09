@@ -71,7 +71,7 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'name',
-		'content',
+		'content:html',
 		'start_time',
 		'end_time',
 		'censor',

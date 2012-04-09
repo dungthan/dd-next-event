@@ -12,6 +12,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Security <?php echo $model->id; ?></h1>
+<h1>Cấu Hình riêng tư : <?php echo $model->user->username; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
