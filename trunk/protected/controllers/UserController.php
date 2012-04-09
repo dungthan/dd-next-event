@@ -68,7 +68,7 @@ class UserController extends Controller
 	    $model = $this->loadModel($id) ;
 	    $Friends = new Friend ;
         $UserId = Yii::app()->user->id ;
-        
+        $modelUser = $this->loadModel($UserId);      
         $CountRequest = Yii::app()->db->createCommand("SELECT COUNT(*) FROM tbl_friend WHERE user1_id = '".$UserId."' AND user2_id = '".$model->id."'")->queryScalar();
         $CountRequest1 = Yii::app()->db->createCommand("SELECT COUNT(*) FROM tbl_friend WHERE user2_id = '".$UserId."' AND user1_id = '".$model->id."'")->queryScalar();
         $StatusRequest = Yii::app()->db->createCommand("SELECT request FROM tbl_friend WHERE user1_id = '".$UserId."' AND user2_id = '".$model->id."'")->queryScalar();
@@ -80,20 +80,22 @@ class UserController extends Controller
         if(isset($_POST['Friend']))
 		{
             if($CountRequest!= 0){ // check when user reload page not create new rational 
-               Yii::app()->user->setFlash('success',"<b>Máº¡ng cÃ¹i báº¯p quÃ¡ :)).<b/>");
+               Yii::app()->user->setFlash('success',"<b>Mạng cùi quá :)).<b/>");
             }else{
     			$Friends->attributes=$_POST['Friend'];
     			if($Friends->save())
                 {
-    			 Yii::app()->user->setFlash('success',"<b>Báº¡n Ä‘Ã£ gá»­i má»™t yÃªu cáº§u káº¿t báº¡n.<b/>");
+    			 Yii::app()->user->setFlash('success',"<b>Đã gủi yêu cầu kết bạn.<b/>");
     			}else{
-    			 Yii::app()->user->setFlash('error',"<b>YÃªu cáº§u tháº¥t báº¡i.<b/>");
+    			 Yii::app()->user->setFlash('error',"<b>yêu cầu thất bại.<b/>");
+                 $this->redirect(array('view','id'=>$model->id));
     			}
             }
 		}
         
 		$this->render('view',array(
 			'model'=>$model,
+            'modelUser'=>$modelUser,
             'Friends'=>$Friends,
             'CountRequest'=>$CountRequest,
             'CountRequest1'=>$CountRequest1,
@@ -128,6 +130,7 @@ class UserController extends Controller
 			        {
 			                $duration = 3600*24*30;
 			                Yii::app()->user->login($identity, $duration);
+                            User::model()->updateByPk($model->id,array('block'=>1));
 			                $this->redirect(array('userprofiles/update', 'id'=>$model->id));
 			        }
 			}

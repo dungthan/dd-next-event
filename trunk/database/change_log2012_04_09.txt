@@ -1,0 +1,4 @@
+﻿1 add table tbl_action
+2 field slide_lage | slide_small 
+
+3 update block in tbl_user when login and register

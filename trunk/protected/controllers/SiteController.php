@@ -72,14 +72,12 @@ class SiteController extends Controller
 	public function actionLogin()
 	{
 		$model=new LoginForm;
-
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-
 		// collect user input data
 		if(isset($_POST['LoginForm']))
 		{
@@ -97,7 +95,8 @@ class SiteController extends Controller
 	 */
 	public function actionLogout()
 	{
-		Yii::app()->user->logout();
+		User::model()->updateByPk(Yii::app()->user->id,array('block'=>0));
+        Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
 }

@@ -27,7 +27,7 @@ class EventController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('hotevent','topevent','index','view','newevent'),
+				'actions'=>array('hotevent','topevent','view','newevent'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -35,7 +35,7 @@ class EventController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('index','admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -190,7 +190,7 @@ class EventController extends Controller
 	 * Lists all models.
 	 */
 	public function actionIndex()
-	{
+	{   
 		$dataProvider=new CActiveDataProvider('Event',array(
             'criteria'=>array(
                 'condition'=>"censor = 0",

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,7 +38,7 @@
 				array('label'=>"Create Event", 'url'=>array('/event/create'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"Total Event", 'url'=>array('/event/totalpost'),'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'bạn bè', 'url'=>array('friend/friend', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>"Create Video", 'url'=>array('/video/create'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>"Cấu hình", 'url'=>array('/security/security'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>"My Video", 'url'=>array('/video/video', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
 			),
 		)); ?>

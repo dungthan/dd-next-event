@@ -7,6 +7,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Update Userprofiles', 'url'=>array('update', 'id'=>$model->user_id)),    
     array('label'=>'Avatar', 'url'=>array('avatar')),
+	array('label'=>'friend', 'url'=>array('friend/friend','id'=>$model->user_id)),
 );
 ?>
 
