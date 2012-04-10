@@ -182,7 +182,7 @@ class User extends CActiveRecord
         $sql = "INSERT INTO tbl_userprofiles (user_id,display_name,first_name,last_name,company,lang,bio,bod,gender,phone,mobile,
                 address_line1,address_line2,address_line3,yim_handle,skype_handle,avatar,facebooksite,update_on)
                 VALUES (:UserId,:DisplayName,'unknown','unknown','unknown','Việt Nam','unknown','0-0-0','unknown','unknown','unknown',
-                        'unknown','unknown','unknown','unknown','unknown','unknown','unknown',0)";
+                        'unknown','unknown','unknown','unknown','unknown','noavatar.gif','unknown',0)";
         $command = Yii::app()->db->createCommand($sql);
         $command->bindValue(":UserId",$userid,PDO::PARAM_INT);
         $command->bindValue(":DisplayName",$displayname ,PDO::PARAM_STR);

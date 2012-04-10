@@ -1,0 +1,1 @@
+﻿thêm các wiget trên index Event_now, Event_quantam, EventCensor, EventNews, NewMember, Top_Event, 
