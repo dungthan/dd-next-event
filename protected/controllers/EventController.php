@@ -65,8 +65,13 @@ class EventController extends Controller
                        {
                                 $like->event_id = $model->id;
                                 $like->attributes=$_POST['Like'];
-                                if ($this->addLike($like))
-                                $this->redirect(array('view','id'=>$model->id));
+                                if ($this->addLike($like)){
+                                    $action = new Action ;
+                                    $url = 'http://'.Yii::app()->request->getServerName();
+                                    $url .= CController::createUrl('event/view', array('id'=>$model->id));
+                                    $action->issertAction(Yii::app()->user->id,Yii::app()->user->id,'đã thích',$model->name,$url);
+                                    $this->redirect(array('view','id'=>$model->id));
+                                }
                        }else
                        {
                                 $like->event_id = $model->id;
@@ -130,9 +135,13 @@ class EventController extends Controller
 		{
 			$model->attributes=$_POST['Event'];
             $DateStart = date('d',strtotime($model->start_time)) ;
-    			if($model->save()){
-    		      	  Yii::app()->user->setFlash('success',"<b>Sự kiện đăng thành công.<b/>");
-                      $this->redirect(array('thumbnail','id'=>$model->id));    
+			if($model->save()){
+                    $action = new Action ;
+                    $url = 'http://'.Yii::app()->request->getServerName();
+                    $url .= CController::createUrl('event/view', array('id'=>$model->id));
+                    $action->issertAction($model->create_user_id,$model->create_user_id,'Đã viết bài mới',$_POST['Event']['name'],$url);
+		      	  Yii::app()->user->setFlash('success',"<b>Sự kiện đăng thành công.<b/>");
+                  $this->redirect(array('thumbnail','id'=>$model->id));    
                 } 
             else{
                 Yii::app()->user->setFlash('error',"<b>Có lỗi xảy ra <b/>");         

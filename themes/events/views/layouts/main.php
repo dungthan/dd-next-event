@@ -37,11 +37,30 @@
     <div id="post">
         <a href="">Đăng sự kiện</a>
     </div>
+	
 </div>
+<?php $this->widget('zii.widgets.CMenu',array(
+			'items'=>array(
+				array('label'=>'Home', 'url'=>array('/site/index')),
+				array('label'=>'User', 'url'=>array('/user/index')),
+                array('label'=>'UserProfiles', 'url'=>array('/userprofiles/index')),
+				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>"Đăng ký", 'url'=>array('/user/register'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>"Tường", 'url'=>array('/me/me', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>"Create Event", 'url'=>array('/event/create'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>"Total Event", 'url'=>array('/event/totalpost'),'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'bạn bè', 'url'=>array('friend/friend', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>"Cấu hình", 'url'=>array('/security/security'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>"My Video", 'url'=>array('/video/video', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
+			),
+		)); ?>
 </div>
+
 <!-- Content -->
 <div id="content">
     <div id="main_content" class="fixed">
+	
        	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,

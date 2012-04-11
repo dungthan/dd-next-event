@@ -7,26 +7,7 @@
             </div>
 			<?php $this->widget("application.components.NewMember");?>
             
-            <div id="active_event" class="col_sidebar">
-                <span class="col_title">Hoạt động vừa diễn ra</span>
-                <ul>
-                <li class="active_content clear">
-                <a href=""><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/avatar/01.gif" /></a>
-                <p><a class="is_link">Du Dan</a> has create an event <a class="is_link">Khi nao moi cuoi vo day??? :|</a></p>
-                </li>
-                
-                <li class="active_content clear">
-                <a href=""><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/avatar/01.gif" /></a>
-                <p><a class="is_link">Du Dan</a> has create an event <a class="is_link">Khi nao moi cuoi vo day??? :|</a></p>
-                </li>
-                
-                <li class="active_content clear">
-                <a href=""><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/avatar/01.gif" /></a>
-                <p><a class="is_link">Du Dan</a> has create an event <a class="is_link">Khi nao moi cuoi vo day??? :|</a></p>
-                </li>
-                </ul>
-
-            </div>
+            <?php $this->widget("application.components.ActionEvent");?>
             <?php $this->widget("application.components.EventCensor");?>
         </div>
         <div id="primary">

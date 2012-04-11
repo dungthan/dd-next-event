@@ -62,35 +62,58 @@ class UserprofilesController extends Controller
 	 */
 	public function actionDisplayprofile($id)
 	{
-	   // $id = Yii::app()->user->id;
-		$this->render('displayprofile',array(
-			'model'=>$this->loadModel($id),
-        ));
+	   if( Yii::app()->user->id == $id ){
+		  //$this->render('displayprofile',array('model'=>$this->loadModel($id),));
+         $this->Security_Me($id);
+      }else {
+          $this->Security_EveryOne($id);
+      }
 	}
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-/*	public function actionCreate()
-	{
-               // if (Yii::app()->user->id === $_GET['id']){
-		        $model=new Userprofiles;
-
-		        // Uncomment the following line if AJAX validation is needed
-		        // $this->performAjaxValidation($model);
-
-		        if(isset($_POST['Userprofiles']))
-		        {
-			        $model->attributes=$_POST['Userprofiles'];
-			        if($model->save())
-				        $this->redirect(array('avatar','id'=>$model->user_id));
-		        }
-		        $this->render('create',array(
-			        'model'=>$model,
-		        ));
-	//	}else echo "bạn không có đủ khả năng để thay đổi";
-	} */
+    
+    public function Security_Me($id){
         
+        $this->render('displayprofile',array('model'=>$this->loadModel($id),));      
+    }
+    
+    public function Security_EveryOne($id){
+        
+        $user_ID = Yii::app()->user->id;
+        $user_0_1 = Friend::model()->findByAttributes (array('user1_id'=>$user_ID,'user2_id'=>$id,'friendship'=>0));
+        $user_0_2 = Friend::model()->findByAttributes (array('user1_id'=>$id,'user2_id'=>$user_ID,'friendship'=>0));
+        if($user_0_1 != NULL || $user_0_2 != NULL){
+            $this->render('displayprofile',array('model'=>$this->loadModel($id),));
+        }else{
+            $this->redirect(array('site/index'));
+        }
+        
+        $user_1_1 = Friend::model()->findByAttributes (array('user1_id'=>$user_ID,'user2_id'=>$id,'friendship'=>1));
+        $user_1_2 = Friend::model()->findByAttributes (array('user1_id'=>$id,'user2_id'=>$user_ID,'friendship'=>1));
+        if($user_1_1 != NULL || $user_1_2 != NULL){
+            $this->render('displayprofile',array('model'=>$this->loadModel($id),));
+        }else{
+            $this->redirect(array('site/index'));
+        }
+        
+        $user_2_1 = Friend::model()->findByAttributes (array('user1_id'=>$user_ID,'user2_id'=>$id,'friendship'=>2));
+        $user_2_2 = Friend::model()->findByAttributes (array('user1_id'=>$id,'user2_id'=>$user_ID,'friendship'=>2));
+        if($user_2_1 != NULL || $user_2_2 != NULL){
+            $this->render('displayprofile',array('model'=>$this->loadModel($id),));
+        }else{
+            $this->redirect(array('site/index'));
+        }
+        
+        $user_3_1 = Friend::model()->findByAttributes (array('user1_id'=>$user_ID,'user2_id'=>$id,'friendship'=>3));
+        $user_3_2 = Friend::model()->findByAttributes (array('user1_id'=>$id,'user2_id'=>$user_ID,'friendship'=>3));
+        if($user_3_1 != NULL || $user_3_2 != NULL){
+            $this->render('displayprofile',array('model'=>$this->loadModel($id),));
+        }else{
+            $this->redirect(array('site/index'));
+        }
+    
+    
+    
+    }
+       
         public function actionAvatar()
         {
                 $id = Yii::app()->user->id;
@@ -102,7 +125,11 @@ class UserprofilesController extends Controller
                     $model->avatar = CUploadedFile::getInstance($model,'avatar');
                     if ($model->save())
                     {
-                      echo "da save" ;
+                        $action = new Action ;
+                        $url = 'http://'.Yii::app()->request->getServerName();
+                        $url .= CController::createUrl('me/me', array('id'=>$model->user_id));
+                        $action->issertAction(Yii::app()->user->id,Yii::app()->user->id,'đã thay đổi ảnh đại diện',$model->display_name,$url);
+          
                       $name = $model->avatar;
                       $path = YiiBase::getPathOfAlias('webroot').'/avatar/';
                       $model->avatar->saveAs($path.$name);
@@ -117,8 +144,9 @@ class UserprofilesController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate()
 	{
+	    $id=Yii::app()->user->id;
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -127,8 +155,14 @@ class UserprofilesController extends Controller
 		if(isset($_POST['Userprofiles']))
 		{
 			$model->attributes=$_POST['Userprofiles'];
-			if($model->save())
+			if($model->save()){
+                $action = new Action ;
+                $url = 'http://'.Yii::app()->request->getServerName();
+                $url .= CController::createUrl('me/me', array('id'=>$model->user_id));
+                $action->issertAction(Yii::app()->user->id,Yii::app()->user->id,'đã thay đổi thông tin cá nhân',$model->display_name,$url);
+            
 				 $this->redirect(array('avatar'));
+            }
 		}
 
 		$this->render('update',array(
