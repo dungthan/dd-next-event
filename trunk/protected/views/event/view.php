@@ -79,5 +79,11 @@ $this->menu=array(
 		'e_like',
 	),
 )); ?>
+<?php 
+$this->widget('SimpleShare', array(
+    'pageTitle' => 'The title of the page.',
+    'pageDescription' => 'The long descriptions of the page.',
+)); 
+?>
 <?php  if(Yii::app()->user->name=='admin'){ echo $this->renderPartial('_censor', array('model'=>$model));} ?>
 

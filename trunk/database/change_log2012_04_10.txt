@@ -1,0 +1,9 @@
+﻿1. add 1 field
+   tbl_action : name_action
+
+2. làm cái cấu hình
+3. hoạt đông đang diễn ra
+4. post bằng face
+
+
+Tuaans

@@ -122,16 +122,19 @@ class UserController extends Controller
 			if($model->save())
 			{
                     $User = new User;
+                    $action= new Action;
+                    $link = Yii::app()->request->hostInfo.'/'.Yii::app()->createUrl(Yii::app()->controller->getId() , $_GET );
+                    $action->issertAction($model->id,$model->id,'Wellcome newBie','NextEvent',$link);
                     $User->insertSecurity($model->id,$model->id,0,0,0); // insert tbl_seccurity
                     $User->insertUserProfile($model->id,$model->username,new CDbExpression('NOW()'));
 			        $identity = new UserIdentity($model->username, $temp);
 			        $identity->authenticate();
 			        if ($identity->errorCode == UserIdentity::ERROR_NONE)
 			        {
-			                $duration = 3600*24*30;
-			                Yii::app()->user->login($identity, $duration);
-                            User::model()->updateByPk($model->id,array('block'=>1));
-			                $this->redirect(array('userprofiles/update', 'id'=>$model->id));
+                        $duration = 3600*24*30;
+		                Yii::app()->user->login($identity, $duration);
+                        User::model()->updateByPk($model->id,array('block'=>1));
+		                $this->redirect(array('userprofiles/update', 'id'=>$model->id));
 			        }
 			}
 		}

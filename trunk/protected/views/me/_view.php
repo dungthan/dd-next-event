@@ -50,7 +50,16 @@ endforeach;
                 if ($model->content !== "") 
                 {
                         if ($model->save())
-                        {
+                        {       
+                                $action = new Action ;
+                                $Display_Name = Yii::app()->db->createCommand("SELECT display_name FROM tbl_userprofiles WHERE user_id='".$data->user_id."' ")->queryScalar(); 
+                                $url = 'http://'.Yii::app()->request->getServerName();
+                                $url .= CController::createUrl('me/me', array('id'=>$data->user_id));
+                                if($data->user_id != Yii::app()->user->id){
+                                    $action->issertAction(Yii::app()->user->id,Yii::app()->user->id,'đã bình luận trên tường của',$Display_Name ,$url);
+                                }else{
+                                    $action->issertAction(Yii::app()->user->id,Yii::app()->user->id,'đã bình luận trên tường của','anh ấy',$url);
+                                }
                                 $this->redirect(array("me/me", 'id'=>$data->user_id));
                         }
                 }

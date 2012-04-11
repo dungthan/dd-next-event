@@ -259,3 +259,7 @@ div#copyright p {
     text-align: center;
     margin: 0;
 }
+#mainmenu
+{
+	background:white url(bg.gif) repeat-x left top;
+}

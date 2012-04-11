@@ -130,8 +130,14 @@ class MeController extends Controller
                         if (isset($_POST['Me']))
                         {       
                                 $model_create->attributes = $_POST['Me'];
-                                if ($model_create->save())
+                                if ($model_create->save()){
+                                    $action = new Action ;
+                                    $url = 'http://'.Yii::app()->request->getServerName();
+                                    $url .= CController::createUrl('me/me', array('id'=>$model_create->user_id));
+                                    $action->issertAction(Yii::app()->user->id,Yii::app()->user->id,'đã viết lên tường',$_POST['Me']['content'],$url);
+                      
                                         $this->redirect(array('me','id'=>Yii::app()->user->id));
+                                }
                         }
                         $dataProvider = new CActiveDataProvider ('Me', array(
                                 'criteria'=>array(

@@ -7,8 +7,8 @@ class Event_now extends CWidget {
 	{
 		$criteria = new CDbCriteria;
 		$criteria->condition = "start_time >= NOW() AND censor = 1";
-		$criteria->order = "create_time DESC";
-		$criteria->limit = 5;
+		$criteria->order = "	start_time ASC";
+		$criteria->limit = 10;
 		$model = Event::model()->findAll($criteria);
 		$this->render ('Event_now', array ('model'=>$model));
 	}

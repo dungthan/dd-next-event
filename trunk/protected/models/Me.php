@@ -108,9 +108,11 @@ class Me extends CActiveRecord
 	public function getPermission ()
 	{
 	        return array (
+                    self::TYPE_MOINGUOI => "Mọi Người",
+                    self::TYPE_BANBE => "Bạn Bè",
 	                self::TYPE_TOI => "Riêng Tôi",
-	                self::TYPE_BANBE => "Bạn Bè",
-	                self::TYPE_MOINGUOI => "Mọi Người",
+	                
+	                
 	        );
 	}
 	
