@@ -8,7 +8,7 @@ class Event_quantam extends CWidget {
 		$criteria = new CDbCriteria;
 		$criteria->condition = "censor = 1";
 		$criteria->order = "view DESC";
-		$criteria->limit = 4;
+		$criteria->limit = 10;
 		$model = Event::model()->findAll($criteria);
 		$this->render('Event_quantam', array('model'=>$model));
 	}

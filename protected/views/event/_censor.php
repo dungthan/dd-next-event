@@ -15,7 +15,7 @@
 		<?php echo $form->error($model,'censor'); ?>
 	</div>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Kiểm Duyệt',array('class'=>'small white button')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

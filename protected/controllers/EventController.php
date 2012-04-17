@@ -27,7 +27,7 @@ class EventController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('hotevent','topevent','view','newevent'),
+				'actions'=>array('hotevent','topevent','view','newevent','searchevent','category'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -189,7 +189,7 @@ class EventController extends Controller
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+				$this->redirect('index');
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -222,6 +222,7 @@ class EventController extends Controller
      */
 	public function actionTotalPost()
     {
+        $this->layout='//layouts/me';
         $NameUser = Yii::app()->user->name;
         $IdUser = Yii::app()->db->createCommand("SELECT id FROM tbl_user WHERE username ='".$NameUser."'")->queryScalar();
          
@@ -229,17 +230,17 @@ class EventController extends Controller
             'criteria'=>array(
                 'condition'=>'create_user_id=:Iduser and censor=0',
                 'params'=>array(':Iduser'=>$IdUser),
-                'order'=>'create_time DESC'
+                'order'=>'start_time DESC'
                 ),
-             'pagination'=> array('pageSize'=>5,),  
+             'pagination'=> array('pageSize'=>10,),  
                 ));
         $dataProviderCensor=new CActiveDataProvider('Event', array(
             'criteria'=>array(
                 'condition'=>'create_user_id=:Iduser  and censor=1',
                 'params'=>array(':Iduser'=>$IdUser),
-                'order'=>'create_time DESC'
+                'order'=>'start_time DESC'
                 ),
-             'pagination'=> array('pageSize'=>5,),  
+             'pagination'=> array('pageSize'=>10,),  
                 ));
         $this->render('totalPost',array(
            'dataProvider'=>$dataProvider,
@@ -376,5 +377,29 @@ class EventController extends Controller
                 ),
         ));
         $this->render('index', array('dataProvider'=>$dataProvider));
-    }
+    }   
+    
+    public function actionSearchEvent()
+	{    
+		$model = new Event('search');
+		$model->unsetattributes();
+		if (isset($_GET['Event']))
+		{
+			$model->attributes=$_GET['Event'];
+			$this->render('searchevent', array('model'=>$model));
+		}
+	}
+    
+    public function actionCategory($type)
+	{ 
+	   $_model = Typeevent::model()->findByAttributes(array('name'=>$type));
+        $criteria = new CDbCriteria;
+		$criteria->condition = "typeevent_id={$_model->id} AND censor = 1";
+		$criteria->order = "	start_time ASC";
+		$criteria->limit = 15;
+		$model = Event::model()->findAll($criteria);
+		$this->render('category',array(
+			'model'=>$model,
+		));
+	}
 }

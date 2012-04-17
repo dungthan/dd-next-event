@@ -10,6 +10,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Event</h1>
-
+<div id="latest_event">
+<span class="col_title">Tạo mới sự kiện</span>
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+</div>

@@ -6,7 +6,7 @@ class FriendController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/me';
 
 	/**
 	 * @return array action filters
@@ -155,6 +155,7 @@ class FriendController extends Controller
      * */
      public function actionFriend($id)
      {
+        $this->layout='//layouts/me';
         $model=$this->loadModel($id);
         $id = Yii::app()->user->id; 
         $UserId2 = Yii::app()->user->id ;
@@ -194,7 +195,7 @@ class FriendController extends Controller
 		}
 	}
     
-       	public function actionSearchFriend()
+    public function actionSearchFriend()
 	{    
 		$model = new User('search');
 		$model->unsetattributes();
@@ -204,4 +205,6 @@ class FriendController extends Controller
 			$this->render('searchfriend', array('model'=>$model));
 		}
 	}
+    
+
 }

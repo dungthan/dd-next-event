@@ -75,11 +75,11 @@ class Me extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'statu_id' => 'Statu',
-			'user_id' => 'User',
-			'content' => 'Content',
-			'create_time' => 'Create Time',
-			'permission' => 'Permission',
+			'statu_id' => 'Trạng thái',
+			'user_id' => 'Người tạo',
+			'content' => 'Nội dung',
+			'create_time' => 'Thời gian tạo',
+			'permission' => 'Cho phép',
 		);
 	}
 
@@ -124,4 +124,5 @@ class Me extends CActiveRecord
 	        }
 	        return parent::beforeValidate();
 	}
+
 }

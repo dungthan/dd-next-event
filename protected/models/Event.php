@@ -144,7 +144,11 @@ class Event extends TimeEvent
 
         return $TypeArray;
     }
-    
+    public function getTypeEventText()
+    {
+        $TypeEventOptions = $this->getTypeEventOptions();
+        return isset($TypeEventOptions[$this->typeevent_id]) ? $TypeEventOptions[$this->typeevent_id] : "({$this->typeevent_id})";
+    }
     public function CensorOptions()
     {
         return array(

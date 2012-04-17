@@ -13,7 +13,7 @@
 <?php else :?>
 <div class="flash-success">
         <?php echo Yii::app()->user->getFlash('error'); ?>
-        <?php  echo "<b>Xin vui lòng nhập chính xác các thông tin</b>"?>
+        <?php  echo "<b style='color: red;' >Xin vui lòng nhập chính xác các thông tin</b>"?>
     </div>  
 <div class="form">
 
@@ -22,7 +22,6 @@
 	'enableAjaxValidation'=>true,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -44,7 +43,7 @@
             'model'=>$model,
             'attribute'=>'content', 
             'options'=>array(
-                'width'=>'600',
+                'width'=>'500',
                 'height'=>250,
                 'useCSS'=>true,
             ),
@@ -115,7 +114,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Tạo Mới' : 'Save',array('class'=>'small white button')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

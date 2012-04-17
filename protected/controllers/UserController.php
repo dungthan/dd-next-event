@@ -21,7 +21,7 @@ class UserController extends Controller
 			),
 		);
 	}
-	public $layout='//layouts/column2';
+	public $layout='//layouts/detail';
 
 	/**
 	 * @return array action filters
