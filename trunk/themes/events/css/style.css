@@ -5,8 +5,8 @@
  
 /* Reset Settings */
 html {margin:0;padding:0;border:0;}
-body {margin: 0; padding: 0;background:none; font-size:12pt;}
-body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, {margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+body {margin: 0; padding: 0;background:none; font-size:11pt;}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, {margin:0;padding:0;border:0;font-size:90%;font:inherit;vertical-align:baseline;}
 table {border-collapse:separate;border-spacing:0;}
 a {text-decoration: none;color: #000;}
 a:hover {text-decoration: none;color: #3477bb;}
@@ -116,7 +116,7 @@ div#sidebar_right {
 }
 
 div#login {
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .col_sidebar span.col_title {
@@ -128,7 +128,7 @@ div#login {
    text-transform: capitalize;
    font-weight: bold;
    color: #3b5998;
-   margin: 10px 0;
+   margin: 2px 0;
 }
 
 .list_mem {
@@ -315,4 +315,81 @@ div#footer {
 div#copyright p {
     text-align: center;
     margin: 0;
+}
+
+/*----Add Friend----*/
+#addfriend{
+	height:180px;
+	width:200px;
+	overflow:hidden;
+    
+	padding:6px 10px 14px 10px;;
+}
+#addfriend li{
+	border:0; margin:0; padding:0; list-style:none;
+}
+
+	#addfriend li{
+		height:50px;
+		padding:2px;
+		list-style:none;
+		
+	}
+		#addfriend a{
+			color:#000000;
+			text-decoration:none;
+			
+		}
+		#addfriend .user-title{
+			display:block;
+			font-weight:bold;
+			margin-bottom:0px;
+			font-size:11px;
+			color:#36538D;
+		}
+		#addfriend .addas{
+			display:block;
+			font-size:11px;
+			color:#666666;
+		}
+		#addfriend img{
+			float:left;
+			margin-right:14px;
+			padding:4px;
+			
+		}
+		#addfriend .del
+		{
+		float:right; font-weight:bold; color:#666666
+		}
+		#addfriend .del a
+		{
+		color:#000000;
+		
+		
+		}
+		#addfriend .del a:hover
+		{
+		background-color:#36538D;
+		padding-left:1px;
+		padding-right:1px;
+		color:#ffffff;
+		}
+        #addfriend span.col_title {
+       display: inline-block;
+       width: 180px;
+       border-bottom: #3b5998 2px solid; 
+       background: url('../images/bg_title.png') bottom left no-repeat;
+       padding: 1px 10px;
+       text-transform: capitalize;
+       font-weight: bold;
+       color: #3b5998;
+       margin: 5px 0;
+        }
+        
+div.view
+{
+	padding: 5px;
+	margin: 5px 0;
+	border: 1px solid #C9E0ED;
 }

@@ -13,6 +13,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Me <?php echo $model->statu_id; ?></h1>
+<div id="latest_event">
+<span class="col_title">Sửa </span>
+
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+</div>

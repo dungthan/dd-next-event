@@ -2,7 +2,7 @@
 
 class SiteController extends Controller
 {
-   // public $layout='//layouts/index';
+    public $layout='//layouts/detail';
 	/**
 	 * Declares class-based actions.
 	 */
@@ -88,10 +88,7 @@ class SiteController extends Controller
             $ID = Yii::app()->db->createCommand("SELECT id FROM tbl_user WHERE username='".$_POST['LoginForm']['username']."'")->queryScalar();          
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
-                $link = Yii::app()->request->hostInfo.'/'.Yii::app()->createUrl(Yii::app()->controller->getId() , $_GET );
-                $action = new Action;
-                $action->issertAction($ID,$ID,"WellCome","NextEvent",$link);
-				$this->redirect(Yii::app()->user->returnUrl);
+                $this->redirect(Yii::app()->user->returnUrl);
             }
 		}
 		// display the login form
@@ -104,11 +101,7 @@ class SiteController extends Controller
 	public function actionLogout()
 	{
 	   
-        $action = new Action;
-        $ID = Yii::app()->user->id;
-        $link = Yii::app()->request->hostInfo.'/'.Yii::app()->createUrl(Yii::app()->controller->getId() , $_GET );
-        $action->issertAction($ID,$ID,"Logout nextEvent","See You AGain",$link);
-		User::model()->updateByPk(Yii::app()->user->id,array('block'=>0));
+ 		User::model()->updateByPk(Yii::app()->user->id,array('block'=>0));
         Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}

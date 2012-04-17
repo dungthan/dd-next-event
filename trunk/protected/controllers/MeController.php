@@ -6,7 +6,7 @@ class MeController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/me';
 
 	/**
 	 * @return array action filters
@@ -65,13 +65,13 @@ class MeController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Me']))
 		{
 			$model->attributes=$_POST['Me'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->statu_id));
+				$this->redirect(array('me','id'=>$model->user_id));
 		}
 
 		$this->render('update',array(
@@ -93,24 +93,12 @@ class MeController extends Controller
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('me','id'=>Yii::app()->user->id));
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
-	/**
-	 * Lists all models.
-	 */
-	/*public function actionIndex()
-	{       
-	        $this->Create();
-	        
-		$dataProvider=new CActiveDataProvider('Me');
-		$this->renderPartial('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}*/
         // action Me hiện lên tường của user có id là $id 
         public function actionMe ($id)
         {
@@ -145,7 +133,7 @@ class MeController extends Controller
                                         'order'=>'create_time desc',
                                 ),
                                 'pagination'=>array(
-                                        'pageSize'=>10,
+                                        'pageSize'=>5,
                                 ),
                         ));
                         $this->render('me',array(
@@ -176,7 +164,7 @@ class MeController extends Controller
                                         'order'=>'create_time ASC',
                                 ),
                                 'pagination'=>array(
-                                        'pageSize'=>10,
+                                        'pageSize'=>5,
                                 ),
                         ));
                         $this->render('me',array('model'=>array('model_create'=>null,'dataProvider'=>$dataProvider)));
@@ -194,7 +182,7 @@ class MeController extends Controller
                                 'order'=>'create_time ASC',
                         ),
                         'pagination'=>array(
-                                'pageSize'=>10,
+                                'pageSize'=>5,
                         ),
                 ));
                 $this->render('me',array('model'=>array('model_create'=>null,'dataProvider'=>$dataProvider)));

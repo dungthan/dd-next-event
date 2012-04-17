@@ -5,6 +5,9 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h1>Register</h1>
+
+<div id="latest_event">
+<span class="col_title">Đăng Ký </span>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+</div>

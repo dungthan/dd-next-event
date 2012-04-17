@@ -69,10 +69,10 @@ class CommentMe extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'create_user_id' => 'Create User',
-			'content' => 'Content',
-			'statu_id' => 'Statu',
-			'create_time' => 'Create Time',
+			'create_user_id' => 'Người viết',
+			'content' => 'Nội dung',
+			'statu_id' => 'Trạng thái',
+			'create_time' => 'Thời gian tạo',
 		);
 	}
 

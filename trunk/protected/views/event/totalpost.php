@@ -8,20 +8,21 @@ $this->menu=array(
 	array('label'=>'Manage Event', 'url'=>array('admin')),
 );
 ?>
-
+<div id="latest_event">
+<span class="col_title">Event chưa kiểm duyệt</span>
 <?php
 echo "Xin Chao` ".Yii::app()->user->name ;
- echo "<h1>Event chưa kiểm duyệt</h1>";
-
  $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); 
 ?>
+</div>
 
-
-<h1>Event đã kiểm duyệt</h1>
+<div id="latest_event">
+<span class="col_title">Event đã kiểm duyệt</span>
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProviderCensor,
 	'itemView'=>'_view',
 )); ?>
+</div>

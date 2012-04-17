@@ -9,14 +9,12 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php //echo $form->labelEx($model,'user_id'); ?>
 		<?php echo $form->hiddenField($model,'user_id', array('value'=>Yii::app()->user->id)); ?>
-		<?php //echo $form->error($model,'user_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'content'); ?>
-		<?php echo $form->textField($model,'content',array('size'=>60,'maxlength'=>1000)); ?>
+		<?php echo $form->textField($model,'content',array('size'=>60,'placeholder'=> 'Bạn đang nghĩ gì ?')); ?>
 		<?php echo $form->error($model,'content'); ?>
 	</div>
 
@@ -26,9 +24,9 @@
 		<?php echo $form->error($model,'permission'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Viết lên tường' : 'Save'); ?>
-	</div>
+
+		<b><?php echo CHtml::submitButton($model->isNewRecord ? 'Viết lên tường' : 'Save',array('class'=>'small white button')); ?></b>
+	
 
 <?php $this->endWidget(); ?>
 
