@@ -5,13 +5,16 @@
         $UserId2 = $id ; 
         $Ids = Friend::model()->findAllByAttributes(array('user2_id'=>$UserId2,'request'=>'0'));
         $ListId = array();
-        foreach($Ids as $Id ):
+        $stt=0;
+        foreach($Ids as $Id ): 
+            $stt++; $mydialog = 'mydialog'.$stt;
             echo '<div class="view">';
 			$name1 = Userprofiles::model()->findByPk($Id['user1_id']);
-			$link1 = CHtml::link(CHtml::encode($name1->display_name), array('/userprofiles/view', 'id'=>$name1->user_id));		
-            echo $link1." ".CHtml::encode($Id->getTypeFriendText())."<br/>";
+			//$link1 = CHtml::link(CHtml::encode($name1->display_name), array('/userprofiles/view', 'id'=>$name1->user_id));		
+            echo CHtml::link('<img alt="'.$name1->display_name.'" src="'.Yii::app()->request->baseUrl.'/avatar/'.$name1->avatar.'" width = 35px height = 34px/>', array('/userprofiles/view', 'id'=>$id['id']),array('class'=>'is_link'));
+            echo " ".CHtml::encode($Id->getTypeFriendText())."<br/>";
             $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
-        	'id'=>'mydialog',
+        	'id'=>$mydialog,
         	'options'=>array(
         		'title'=>'Kết bạn',
                 'width'=>100,
@@ -19,7 +22,7 @@
         		'autoOpen'=>false,
         		'modal'=>true,
                 'resizable'=>false,
-                'closeOnEscape' => false,		
+                'closeOnEscape' => true,		
             	),
              ));
             $modelId=$this->loadModel($Id['id']);
@@ -33,9 +36,8 @@
             echo $this->renderPartial('_form',array('model'=>$modelId));  
          
          $this->endWidget('zii.widgets.jui.CJuiDialog');
-            echo CHtml::submitButton('Kết Bạn', array(	'onclick'=>'$("#mydialog").dialog("open"); return false;',));
-            
-            echo CHtml::button('Delete',array('submit'=>array('delete','id'=>$Id['id']),'confirm'=>'Bạn có muốn hủy yêu cầu kết bạn' ));
+            echo CHtml::submitButton('Kết Bạn', array(	'onclick'=>'$("#mydialog1").dialog("open"); return false;',));          
+            echo CHtml::button('Hủy yêu cầu',array('submit'=>array('delete','id'=>$Id['id']),'confirm'=>'Bạn có muốn hủy yêu cầu kết bạn' ),array('class'=>'small white button'));
             echo '</div>';            
        endforeach;
 ?>

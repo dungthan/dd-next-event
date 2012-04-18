@@ -7,7 +7,7 @@ class NewMember extends CWidget {
 	{
 		$criteria = new CDbCriteria;
 		$criteria->order = "create_time DESC";
-		$criteria->limit = 8;
+		$criteria->limit = 12;
 		$model = User::model()->findAll($criteria);
 		$this->render('NewMember', array('model'=>$model));
 	}

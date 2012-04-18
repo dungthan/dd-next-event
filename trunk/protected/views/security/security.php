@@ -12,6 +12,10 @@ $this->menu=array(
 );
 ?>
 
-<h1>Cấu Hình riêng tư : <?php echo $model->user->username; ?></h1>
+<?php 
+print('<div id="latest_event"  >
+            <span class="col_title">Cấu hình riêng tư : '.$model->user->username.' </span>');
+echo $this->renderPartial('_form', array('model'=>$model)); 
+print('</div>');
+?>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -1,9 +1,8 @@
       <?php $this->beginContent('//layouts/main'); ?>
         <div id="sidebar_left" class="sidebar">
             <?php $this->widget("application.components.Profiles");?>
-            <?php $this->widget("application.components.EventNews");?>
-            
-            
+            <?php $this->widget("application.components.Friendlist");?>
+            <?php $this->widget("application.components.EventNews");?>         
         </div>
         <div id="primary">
             <div id="primary_content">

@@ -114,7 +114,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Tạo Mới' : 'Save',array('class'=>'small white button')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Tạo Mới' : 'Save',array('class'=>'small blue button')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

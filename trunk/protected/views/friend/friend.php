@@ -10,14 +10,20 @@ $this->menu=array(
 );
 ?>
 
-<?php $this->widget("application.components.SearchFriend");?>
 <?php 
+print('<div id="latest_event">
+            <span class="col_title">Danh sách yêu cầu kết bạn </span>');
  if ($CountRequest!= 0) {
-    echo "<h1>Danh sach nguoi gui yeu cau ket ban</h1>";
+    //echo "<h1>Danh sach nguoi gui yeu cau ket ban</h1>";
     echo $this->renderPartial('_friend',array('id'=>$model->id,'model'=>$model));  
- }else {echo "Bạn Chưa Có Yêu Cầu Kết Bạn";}
+ }else {echo "Chưa Có Yêu Cầu Kết Bạn";}
+ print('</div>');
+ 
+ print('<div id="latest_event">
+            <span class="col_title">Danh sách bạn bè </span>');
  if ($CountRequest1!= 0 ||$CountRequest2!= 0 ) {
-    echo "<h1>Danh sach ban be</h1>";
     echo $this->renderPartial('_friendship',array('id'=>$model->id,'model'=>$model));
- } ?>
+ }
+ print('</div>');
+  ?>
 

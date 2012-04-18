@@ -10,6 +10,14 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Video</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+
+<?php
+
+print('<div id="latest_event"  >
+            <span class="col_title">Đăng video </span>');
+ echo $this->renderPartial('_form', array('model'=>$model));
+ 
+print('</div>'); 
+ 
+  ?>
