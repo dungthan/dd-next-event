@@ -12,7 +12,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
     <meta name="author" content="MrDan" />
-
+    <link rel="Shortcut icon" type="image/x-icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/images/e-icon.png">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/form.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/css-buttons.css" />

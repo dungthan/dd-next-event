@@ -246,37 +246,37 @@ class UserController extends Controller
      * 
      * */
 
- public function actionChangePass() 
-        {                  
-                $id = Yii::app()->user->id ;
-                $model = $this->loadModel($id);
-                $model->unsetAttributes() ;
-                $this->performAjaxValidation($model);
+    public function actionChangePass() 
+    {   $this->layout='//layouts/me';               
+        $id = Yii::app()->user->id ;
+        $model = $this->loadModel($id);
+        $model->unsetAttributes() ;
+        $this->performAjaxValidation($model);
+        $new_password = User::model()->findByPk(Yii::app()->user->id);
+        $old_password = $new_password->MD5P($model->oldPassword);
+                        
+        if(isset($_POST['User']))
+    		{
+    			$model->attributes=$_POST['User'];
                 $new_password = User::model()->findByPk(Yii::app()->user->id);
                 $old_password = $new_password->MD5P($model->oldPassword);
-                                
-                if(isset($_POST['User']))
-            		{
-            			$model->attributes=$_POST['User'];
-                        $new_password = User::model()->findByPk(Yii::app()->user->id);
-                        $old_password = $new_password->MD5P($model->oldPassword);
-                        if($new_password->password != $old_password)
-                        {
-                            $model->addError('oldPassword', "<b>You've enterd wrong old password.<b/>");
-                            $model->unsetAttributes();
-                        }else{
-                			if($model->save())
-                            {
-                			    Yii::app()->user->setFlash('success',"<b>Password đã lưu thành công.<b/>");
-                				$this->redirect(array('view','id'=>$model->id));
-                            }else
-                            { 
-                                Yii::app()->user->setFlash('fail',"<b>Password nhập vào không dúng. Vui lòng thử lại .<b/>");
-                            }
-                        }
-            		}
-              
-            $this->render('changepass',array('model'=>$model));
+                if($new_password->password != $old_password)
+                {
+                    $model->addError('oldPassword', "<b>You've enterd wrong old password.<b/>");
+                    $model->unsetAttributes();
+                }else{
+        			if($model->save())
+                    {
+        			    Yii::app()->user->setFlash('success',"<b>Password đã lưu thành công.<b/>");
+        				$this->redirect(array('view','id'=>$model->id));
+                    }else
+                    { 
+                        Yii::app()->user->setFlash('fail',"<b>Password nhập vào không dúng. Vui lòng thử lại .<b/>");
+                    }
+                }
+    		}
+      
+    $this->render('changepass',array('model'=>$model));
 
-        }
+  }
 }

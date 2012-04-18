@@ -23,7 +23,7 @@
 	</div>
     
 	<div class="row">
-		<?php echo $form->labelEx($model,'Mối quan hệ'); ?>
+		<?php echo $form->labelEx($model,'Quan hệ'); ?>
 		<?php echo $form->dropDownList($model,'friendship',array('1'=>'Bạn bè','2'=>'Bạn thân','3'=>'Gia đình')); ?>
 		<?php echo $form->error($model,'friendship'); ?>
 	</div>

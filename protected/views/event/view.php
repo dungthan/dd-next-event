@@ -3,14 +3,6 @@ $this->breadcrumbs=array(
 	'Events'=>array('index'),
 	$model->name,
 );
-$this->menu=array(
-	array('label'=>'List Event', 'url'=>array('index')),
-	array('label'=>'Create Event', 'url'=>array('create')),
-	array('label'=>'Update Event', 'url'=>array('update', 'id'=>$model->id)),
-    array('label'=>'Change Thumbnail', 'url'=>array('thumbnail', 'id'=>$model->id)),
-	array('label'=>'Delete Event', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Event', 'url'=>array('admin')),
-);
 ?>
 <?php
     Yii::app()->clientScript->registerScript(
@@ -62,7 +54,7 @@ $form=$this->beginWidget('CActiveForm', array(
 )); 
 if (Yii::app()->user->id !== NULL):
        echo $form->hiddenField($like,'user_id', array('value'=>Yii::app()->user->id));
-	   echo CHtml::submitButton('thích',array('class'=>'small white button')); 
+	   echo CHtml::submitButton('thích',array('class'=>'small blue button')); 
 endif;
 foreach ($str_like as $line):
        $name = Userprofiles::model()->findByPk($line['user_id']);
@@ -99,13 +91,18 @@ endif; ?>
         
         </table>
     </div>
-    <div class="advertisment clear"></div>
+    <div class="advertisment clear" align="center"> Quảng Cáo </div>
     <div class="event_detail">
     <span class="col_title">Giới thiệu</span>
         <?php echo $model->content?>
     </div>
     
-<?php  if(Yii::app()->user->name=='admin'){ 
+<?php  if(Yii::app()->user->name=='admin' and $model->censor != 1){ 
             echo $this->renderPartial('_censor', array('model'=>$model));
-            echo CHtml::button('Hủy',array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Bạn có muốn hủy sự kiện này' ));
+            echo CHtml::button('Không kiểm duyệt',array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Bạn có muốn hủy sự kiện này' ));
 } ?>
+<?php
+if(Yii::app()->user->id == $model->create_user_id){
+    echo CHtml::link('Đổi thumnail',array('thumbnail', 'id'=>$model->id),array('class'=>'is_link'));
+}
+?>

@@ -9,9 +9,16 @@ $this->menu=array(
 );
 ?>
 
-<h1>Videos</h1>
+<?php
 
-<?php $this->widget('zii.widgets.CListView', array(
+print('<div id="latest_event"  >
+            <span class="col_title">My video </span>');
+ $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
-)); ?>
+));
+ 
+print('</div>');
+
+
+  ?>

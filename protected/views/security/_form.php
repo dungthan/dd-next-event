@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form" style="margin-left: 40px;">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'security-form',
@@ -27,7 +27,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('class'=>'small blue button')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
