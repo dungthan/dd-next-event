@@ -1,7 +1,4 @@
 
-<body>
-
-
 <script type="text/javascript">
  $(document).ready( function(){							 
 		var buttons = { previous:$('#jslidernews1 .button-previous') ,
@@ -29,9 +26,8 @@
   
               <div class="main-slider-content" style="width:730px; height:200px;">
                 <ul class="sliders-wrap-inner">
-                <?php foreach ($model as $row) :?>
                     <li>
-                            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/thumbnail/<?php echo $row['thumbnail'] ?>" width="730px" height="200px" title="Newsflash 2" >     
+                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/thumbl_980x340.png" title="Newsflash 2" >     
                           <div class="slider-description">
                             <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ Newsflash 1 /</a> <i> — Monday, February 15, 2010 12:42</i></div>
                             <h4>Content of Newsflash 1</h4>
@@ -40,7 +36,6 @@
                             </p>
                          </div>
                     </li> 
-                    <?php endforeach ;?> 
                   </ul>  	
             </div>
             
@@ -48,11 +43,18 @@
                   <div class="button-control"><span></span></div>	
                   <div class="navigator-wrapper">
                         <ul class="navigator-wrap-inner">
-                          <?php $stt=0 ; foreach($model as $row): $stt++?> <li><span><?php echo $stt ;?></span></li><?php endforeach ;?>          		
+                           <li><span>1</span></li>
+                           <li><span>2</span></li>
+                           <li><span>3</span></li>
+                           <li><span>4</span></li>    
+                           <li><span>5</span></li>
+                           <li><span>6</span></li>       
+                           <li><span>7</span></li>       
+                           <li><span>8</span></li>          		
                         </ul>
                   </div>
                 
              </div> 
-         
+          
  </div> 
 </div>

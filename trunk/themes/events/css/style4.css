@@ -21,8 +21,8 @@
     right: 10px;
 }
 .lof-slidecontent  .navigator-wrapper{	position:relative;	z-index:10;
-	height:100px;
-	width:730px;
+	height:180px;
+	width:310px;
 	overflow:hidden;
 	color:#FFF;
 	float:left
@@ -42,7 +42,7 @@ ul.sliders-wrap-inner li img{	padding:0px;	}
 	bottom:50px;
 	left:0px;
 	width:350px;
-	background:url('../images/slide/bg_trans.png');
+	background:url(../images/slide/bg_trans.png);
 	height:100px;
 	padding:10px;
 	color:#FFF;
@@ -118,7 +118,7 @@ ul.sliders-wrap-inner li img{	padding:0px;	}
 }
 .lof-slidecontent   .button-next {
 	right:0px;
-	background:url('../images/slide/next.png') no-repeat right center;
+	background:url(../images/slide/next.png) no-repeat right center;
 }
 .lof-slidecontent  .button-previous {
 	left:0px;

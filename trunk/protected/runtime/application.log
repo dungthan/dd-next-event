@@ -1118,3 +1118,129 @@ REQUEST_URI=/Yii_FrameWord/next-event/index.php
 in D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\views\SlideLage.php (19)
 in D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\SlideLage.php (11)
 in D:\xampp\htdocs\Yii_FrameWord\next-event\themes\events\views\layouts\index.php (21)
+2012/04/19 07:59:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php:484
+Stack trace:
+#0 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(271): CController->missingAction('add')
+#1 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(276): CController->run('add')
+#2 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(135): CWebApplication->runController('friend/add')
+#3 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\Yii_FrameWord\next-event\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/Yii_FrameWord/next-event/index.php?r=friend/add&id=1
+HTTP_REFERER=http://localhost/Yii_FrameWord/next-event/index.php?r=me/me&id=1
+---
+2012/04/19 09:58:07 [error] [exception.CException] exception 'CException' with message 'Property "SlideLage.cssFile" is not defined.' in D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CComponent.php:131
+Stack trace:
+#0 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\SlideLage.php(5): CComponent->__get('cssFile')
+#1 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(148): SlideLage->init()
+#2 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(173): CBaseController->createWidget('application.com...', Array)
+#3 D:\xampp\htdocs\Yii_FrameWord\next-event\themes\events\views\layouts\index.php(21): CBaseController->widget('application.com...')
+#4 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(127): require('D:\xampp\htdocs...')
+#5 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\xampp\htdocs...', Array, true)
+#6 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(785): CBaseController->renderFile('D:\xampp\htdocs...', Array, true)
+#7 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\controllers\SiteController.php(34): CController->render('index')
+#8 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#9 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(276): CController->run('')
+#13 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(135): CWebApplication->runController('')
+#14 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\Yii_FrameWord\next-event\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/Yii_FrameWord/next-event/index.php
+---
+2012/04/19 09:58:21 [error] [exception.CException] exception 'CException' with message 'Property "SlideLage.cssFile" is not defined.' in D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CComponent.php:131
+Stack trace:
+#0 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\SlideLage.php(5): CComponent->__get('cssFile')
+#1 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(148): SlideLage->init()
+#2 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(173): CBaseController->createWidget('application.com...', Array)
+#3 D:\xampp\htdocs\Yii_FrameWord\next-event\themes\events\views\layouts\index.php(21): CBaseController->widget('application.com...')
+#4 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(127): require('D:\xampp\htdocs...')
+#5 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\xampp\htdocs...', Array, true)
+#6 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(785): CBaseController->renderFile('D:\xampp\htdocs...', Array, true)
+#7 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\controllers\SiteController.php(34): CController->render('index')
+#8 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#9 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(276): CController->run('')
+#13 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(135): CWebApplication->runController('')
+#14 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\Yii_FrameWord\next-event\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/Yii_FrameWord/next-event/index.php
+---
+2012/04/19 09:58:41 [error] [exception.CException] exception 'CException' with message 'Property "SlideLage.cssFile" is not defined.' in D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CComponent.php:131
+Stack trace:
+#0 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\SlideLage.php(5): CComponent->__get('cssFile')
+#1 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(148): SlideLage->init()
+#2 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(173): CBaseController->createWidget('application.com...', Array)
+#3 D:\xampp\htdocs\Yii_FrameWord\next-event\themes\events\views\layouts\index.php(21): CBaseController->widget('application.com...')
+#4 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(127): require('D:\xampp\htdocs...')
+#5 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\xampp\htdocs...', Array, true)
+#6 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(785): CBaseController->renderFile('D:\xampp\htdocs...', Array, true)
+#7 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\controllers\SiteController.php(34): CController->render('index')
+#8 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#9 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(276): CController->run('')
+#13 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(135): CWebApplication->runController('')
+#14 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\Yii_FrameWord\next-event\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/Yii_FrameWord/next-event/index.php
+---
+2012/04/19 10:23:41 [error] [php] Undefined variable: function (D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\views\SlideLage.php:34)
+Stack trace:
+#0 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\widgets\CWidget.php(244): SlideLage->renderFile()
+#1 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\SlideLage.php(19): SlideLage->render()
+#2 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWidgetFactory.php(148): SlideLage->SlideLage()
+#3 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(147): CWidgetFactory->createWidget()
+#4 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(173): SiteController->createWidget()
+#5 D:\xampp\htdocs\Yii_FrameWord\next-event\themes\events\views\layouts\index.php(21): SiteController->widget()
+#6 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(127): require()
+#7 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(96): SiteController->renderInternal()
+#8 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(785): SiteController->renderFile()
+#9 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\controllers\SiteController.php(34): SiteController->render()
+#10 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#11 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(309): CInlineAction->runWithParams()
+#12 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(287): SiteController->runAction()
+#13 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(266): SiteController->runActionWithFilters()
+#14 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(276): SiteController->run()
+#15 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#16 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 D:\xampp\htdocs\Yii_FrameWord\next-event\index.php(13): CWebApplication->run()
+REQUEST_URI=/Yii_FrameWord/next-event/index.php
+in D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\views\SlideLage.php (34)
+in D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\SlideLage.php (19)
+in D:\xampp\htdocs\Yii_FrameWord\next-event\themes\events\views\layouts\index.php (21)
+2012/04/19 10:45:30 [error] [exception.CException] exception 'CException' with message 'Property "Event.thumnail" is not defined.' in D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CComponent.php:131
+Stack trace:
+#0 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\db\ar\CActiveRecord.php(144): CComponent->__get('thumnail')
+#1 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CModel.php(593): CActiveRecord->__get('thumnail')
+#2 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\views\SlideLage.php(34): CModel->offsetGet('thumnail')
+#3 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(131): require('D:\xampp\htdocs...')
+#4 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\xampp\htdocs...', Array, false)
+#5 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\widgets\CWidget.php(244): CBaseController->renderFile('D:\xampp\htdocs...', Array, false)
+#6 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\components\SlideLage.php(19): CWidget->render('SlideLage', Array)
+#7 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWidgetFactory.php(148): SlideLage->SlideLage(Object(SiteController))
+#8 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(147): CWidgetFactory->createWidget(Object(SiteController), 'application.com...', Array)
+#9 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(173): CBaseController->createWidget('application.com...', Array)
+#10 D:\xampp\htdocs\Yii_FrameWord\next-event\themes\events\views\layouts\index.php(21): CBaseController->widget('application.com...')
+#11 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(127): require('D:\xampp\htdocs...')
+#12 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\xampp\htdocs...', Array, true)
+#13 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(785): CBaseController->renderFile('D:\xampp\htdocs...', Array, true)
+#14 D:\xampp\htdocs\Yii_FrameWord\next-event\protected\controllers\SiteController.php(34): CController->render('index')
+#15 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#16 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#17 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#18 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(276): CController->run('')
+#20 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\web\CWebApplication.php(135): CWebApplication->runController('')
+#21 D:\xampp\htdocs\Yii_FrameWord\next-event\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#22 D:\xampp\htdocs\Yii_FrameWord\next-event\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/Yii_FrameWord/next-event/index.php
+---
