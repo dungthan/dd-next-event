@@ -13,12 +13,12 @@
             
 			<?php $this->widget("application.components.NewMember");?>          
             <?php $this->widget("application.components.EventNews");?>
-            <?php $this->widget("application.components.EventCensor");?>
-            
+            <?php $this->widget("application.components.EventCensor");?>           
             
         </div>
+        
         <div id="primary">
-            <div id="slider"></div>
+            <div id="slider"> <?php $this->widget("application.components.SlideLage");?> </div>
             <div id="primary_content">
                 <?php $this->widget("application.components.Top_Event");?>
                 <?php $this->widget("application.components.Event_now");?>

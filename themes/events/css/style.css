@@ -75,7 +75,7 @@ div#post a:hover {
 }
 
 div#content {
-    //background: url('../images/bg_main.gif') bottom left repeat-x;
+    background: url('../images/bg_main.gif') bottom left repeat-x;
     background-color: #fff;
 }
 div#primary {    
@@ -88,8 +88,8 @@ div#sidebar_left {
 
 div#slider {
     width: 730px;
-    padding: 100px 0;
-    background: url('../images/slide.jpg') no-repeat;
+    padding: 0px 0;
+   // background: url('../images/slide.jpg') no-repeat;
 }
 div#primary_content {
     padding: 10px 0;
