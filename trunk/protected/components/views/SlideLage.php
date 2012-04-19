@@ -1,4 +1,8 @@
 
+<?php
+yii::import("application.components.functions", true);
+$function = new functions();
+?>
 <body>
 
 
@@ -31,12 +35,15 @@
                 <ul class="sliders-wrap-inner">
                 <?php foreach ($model as $row) :?>
                     <li>
+                    <?php 
+                		$time = getdate(strtotime($row['start_time']));
+                		$date = "Ngày ".$time["mday"]." tháng ".$time["mon"]." năm ".$time["year"];
+              		?>
                             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/thumbnail/<?php echo $row['thumbnail'] ?>" width="730px" height="200px" title="Newsflash 2" >     
                           <div class="slider-description">
-                            <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ Newsflash 1 /</a> <i> — Monday, February 15, 2010 12:42</i></div>
-                            <h4>Content of Newsflash 1</h4>
-                            <p>The one thing about a Web site, it always changes! Joomla! makes it easy to add Articles, content,...
-                            <a class="readmore" href="#">Read more </a>
+                            <div class="slider-meta"><a target="_parent" title="<?php echo $function->CutString($row['name'],50)?>" href="#Category-1">/ <?php echo $function->CutString($row['name'],50)?> /</a> <i> <?php echo $date ;?></i></div>
+                            <p><?php echo $function->CutString($row['content'],70)?>...
+                            <?php echo CHtml::link('Read more',array('event/view','id'=>$row['id']),array('class'=>'is_link'))?>
                             </p>
                          </div>
                     </li> 
