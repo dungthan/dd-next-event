@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class SiteController extends Controller
 {
@@ -85,7 +85,7 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['LoginForm'];
              
-            $ID = Yii::app()->db->createCommand("SELECT id FROM tbl_user WHERE username='".$_POST['LoginForm']['username']."'")->queryScalar();          
+           // $ID = Yii::app()->db->createCommand("SELECT id FROM tbl_user WHERE username='".$_POST['LoginForm']['username']."'")->queryScalar();          
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
                 $this->redirect(array('me/me','id'=>Yii::app()->user->id));
