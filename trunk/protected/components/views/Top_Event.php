@@ -2,7 +2,8 @@
 yii::import("application.components.functions", true);
 $function = new functions();
 ?>
-<div id="top_event" class="clear">
+
+<div id="top_event" class="clear" style="border: 1px">
 	<?php foreach ($model as $row):?>
 		<?php 
 		$time = getdate(strtotime($row['start_time']));

@@ -128,11 +128,11 @@ div#login {
    text-transform: capitalize;
    font-weight: bold;
    color: #3b5998;
-   margin: 2px 0;
+   margin: 0px 0;
 }
 
 .list_mem {
-    padding: 10px;
+    padding: 5px;
 }
 .list_mem li {
     padding: 5px;
@@ -226,9 +226,19 @@ div#latest_event span.col_title, div.event_detail span.col_title, div.event_cont
    color: #3b5998;
    margin: 10px 0;
 }
+span.col_title1{
+   display: inline-block;
+   width: 460px;
+   border-bottom: #3b5998 1px solid; 
+   padding: 1px 5px;
+   text-transform: capitalize;
+   font-weight: bold;
+   color: #3b5998;
+   margin: 5px 0;
+}
 .col_lastest_event {
-    margin: 10px 0;
-    padding: 10px 0;
+    margin: 5px 0;
+    padding: 5px 0;
 }
 .event_title {
     text-transform: uppercase;

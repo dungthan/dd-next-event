@@ -131,6 +131,9 @@ class Event extends TimeEvent
 		$criteria->compare('view',$this->view);
 		$criteria->compare('e_like',$this->e_like);
 		$criteria->compare('censor',$this->censor);
+        
+		$criteria->condition = "censor = 1 AND start_time >= NOW()";
+		$criteria->order = "start_time ASC";
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

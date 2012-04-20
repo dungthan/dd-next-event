@@ -2,8 +2,6 @@
 yii::import("application.components.functions", true);
 $function = new functions();
 ?>
-<div id="latest_event">
-    <span class="col_title">tìm kiếm sự kiện</span>
     <div class="col_lastest_event clear">
     <ul class="event_time">
 		<?php $time = getdate(strtotime($data->start_time));
@@ -26,4 +24,4 @@ $function = new functions();
     <p><?php echo $data->place;?></p>
 	<p><?php echo CHtml::link($data->createUser->username , array('/userprofiles/view', 'id'=>$data->create_user_id), array('class'=>'is_link is_creator'));?>  |  <?php echo $data->typeevent->name;?>  |  <?php echo $data->view." lượt xem";?></p>
 </div>
-</div>
+<span class="col_title1"></span>

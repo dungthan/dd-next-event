@@ -88,7 +88,7 @@ class SiteController extends Controller
             $ID = Yii::app()->db->createCommand("SELECT id FROM tbl_user WHERE username='".$_POST['LoginForm']['username']."'")->queryScalar();          
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
-                $this->redirect(Yii::app()->user->returnUrl);
+                $this->redirect(array('me/me','id'=>Yii::app()->user->id));
             }
 		}
 		// display the login form

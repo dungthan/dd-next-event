@@ -11,7 +11,7 @@
             echo '<div class="view">';
 			$name1 = Userprofiles::model()->findByPk($Id['user1_id']);
 			//$link1 = CHtml::link(CHtml::encode($name1->display_name), array('/userprofiles/view', 'id'=>$name1->user_id));		
-            echo CHtml::link('<img alt="'.$name1->display_name.'" src="'.Yii::app()->request->baseUrl.'/avatar/'.$name1->avatar.'" width = 35px height = 34px/>', array('/userprofiles/view', 'id'=>$id['id']),array('class'=>'is_link'));
+            echo CHtml::link('<img alt="'.$name1->display_name.'" src="'.Yii::app()->request->baseUrl.'/avatar/'.$name1->avatar.'" width = 35px height = 34px/>', array('/userprofiles/view', 'id'=>$name1->user_id),array('class'=>'is_link'));
             echo " ".CHtml::encode($Id->getTypeFriendText())."<br/>";
             $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         	'id'=>$mydialog,

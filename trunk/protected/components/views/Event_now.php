@@ -2,7 +2,7 @@
 yii::import("application.components.functions", true);
 $function = new functions();
 ?>
-<div id="latest_event">
+<div id="latest_event" >
 <span class="col_title">Sự kiện sắp diễn ra</span>
 <?php foreach ($model as $row):?>
 <div class="col_lastest_event clear">
@@ -27,5 +27,6 @@ $function = new functions();
     <p><?php echo $row['place'];?></p>
 	<p><?php echo CHtml::link($row->createUser->username , array('/userprofiles/view', 'id'=>$row['create_user_id']), array('class'=>'is_link is_creator'));?>  |  <?php echo $row->typeevent->name;?>  |  <?php echo $row['view']." lượt xem";?></p>
 </div>
+<span class="col_title1"></span>
 <?php endforeach;?>
 </div>
