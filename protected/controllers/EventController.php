@@ -340,15 +340,15 @@ class EventController extends Controller
     {
         $dataProvider = new CActiveDataProvider ('Event', array(
                 'criteria'=>array(
-                        'condition'=>'',
-                        'order'=>'create_time DESC',
-                        'limit'=>10,
+                        'condition'=>'censor = 1 AND start_time >= NOW()',
+                        'order'=>'start_time DESC',
+                        'limit'=>15,
                 ),
                 'pagination'=>array(
                         'pagesize'=>10,
                 ),
         ));
-        $this->render('index', array('dataProvider'=>$dataProvider));
+        $this->render('newevent', array('dataProvider'=>$dataProvider));
     }
     public function actionTopevent ()
     {

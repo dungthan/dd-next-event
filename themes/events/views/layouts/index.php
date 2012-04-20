@@ -19,10 +19,12 @@
         
         <div id="primary">
             <div id="slider"> <?php $this->widget("application.components.SlideLage");?> </div>
-            <div id="primary_content">
+        
+            <div id="primary_content" >
                 <?php $this->widget("application.components.Top_Event");?>
                 <?php $this->widget("application.components.Event_now");?>
             </div>
+        
             <div id="sidebar_right" class="sidebar">
             <?php $this->widget("application.components.Event_quantam");?>         
             <?php $this->widget("application.components.ActionEvent");?>

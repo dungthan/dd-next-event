@@ -25,3 +25,4 @@ $function = new functions();
     <p><?php echo $data->place;?></p>
 	<p><?php echo CHtml::link($data->createUser->username , array('/userprofiles/view', 'id'=>$data->create_user_id), array('class'=>'is_link is_creator'));?>  |  <?php echo $data->typeevent->name;?>  |  <?php echo $data->view." lượt xem";?></p>
 </div>
+<span class="col_title1"></span>

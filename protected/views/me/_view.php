@@ -1,18 +1,17 @@
-<?php
-Yii::app()->clientScript->registerScript('_view', "
-$('.comment-button').click(function(){
-	$('.comment').toggle();
-	return false;
-});
-$('.comment').submit(function(){
-	$.fn.yiiGridView.update('user-grid', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
-
-?>
+<script >
+function toggle2(showHideDiv, switchTextDiv) {
+	var ele = document.getElementById(showHideDiv);
+	var text = document.getElementById(switchTextDiv);
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "Hiện tất cả";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "Ẩn bình luận";
+	}
+}
+</script>
 <div class="view">
 
 <div id="new_event" class="col_sidebar view"> 
@@ -41,12 +40,12 @@ $('.comment').submit(function(){
 </ul>
 </div>
 <!------SHOWWWWW------>
-<?php
+<?php 
     $totalComment = Yii::app()->db->createCommand("SELECT COUNT(*) FROM tbl_comment_me WHERE statu_id = {$data->statu_id}")->queryScalar(); 
-    echo CHtml::link('Bình luận ','#',array('class'=>'comment-button is_link'));
-    echo " ".$totalComment." bình luận" ;
+    echo " ".$totalComment." bình luận " ;
 ?>
-<div class="comment" style="display:none">
+<a class="is_link" id="myHeader<?php echo $data->statu_id ;?>" href="javascript:toggle2('comment<?php echo $data->statu_id ;?>','myHeader<?php echo $data->statu_id ;?>');" >Hiện tất cả</a>
+<div  id="comment<?php echo $data->statu_id ;?>" style="display:none">
 <?php
 // truy xuất ở bảng CommentMe với điều kiện statu_id = $data->statu_id;
 $comment = CommentMe::model()->findAllByAttributes(array('statu_id'=>$data->statu_id));

@@ -14,5 +14,6 @@ $function = new functions();
 </li>
 <?php endforeach;?>
 </ul>
+<p align="right"> <b><?php echo CHtml::link('xem tất cả >>',array('event/newevent'),array('class'=>'is_link')) ;?></b></p>
 
 </div>
