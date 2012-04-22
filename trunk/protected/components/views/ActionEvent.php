@@ -13,7 +13,7 @@ $function = new functions();
 	echo CHtml::link('<img alt="'.$ID['display_name'].'" src="'.Yii::app()->request->baseUrl.'/avatar/'.$ID['avatar'].'" width = 35px height = 34px/>', array('/userprofiles/view', 'id'=>$row['user_id']));
 ?>
 <br />
-<p><a class="is_link"><?php echo CHtml::link($ID['display_name'], array('/userprofiles/view', 'id'=>$row['user_id']),array('class'=>'is_link')) ;?></a> <?php echo $row->action ;?>
+<p><a class="is_link"><?php echo CHtml::link($ID['display_name'], array('/me/me', 'id'=>$row['user_id']),array('class'=>'is_link')) ;?></a> <?php echo $row->action ;?>
 <a class="is_link"><?php echo CHtml::link($function->CutString($row->name_action,25),$row->link,array('class'=>'is_link')) ;?></a></p>
 </li>
 

@@ -10,8 +10,14 @@
         
 	<div class="row">
 		<?php echo $form->labelEx($model,'content'); ?>
+        <ul class="list_mem "><li>
+        <?php $profiles = Userprofiles::model()->findByPk(Yii::app()->user->id);
+             echo CHtml::link('<img alt="'.$profiles->display_name.'" src="'.Yii::app()->request->baseUrl.'/avatar/'.$profiles->avatar.'" width = 35px height = 34px/>', array('/me/me', 'id'=>Yii::app()->user->id));
+        ?> </li>
+        
 		<?php echo $form->textField($model,'content',array('size'=>60,'placeholder'=> 'Bình luận ')); ?>
 		<?php echo $form->error($model,'content'); ?>
+        </ul>
 	</div>
 	
 	<div class="row buttons">
