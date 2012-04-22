@@ -9,15 +9,21 @@
     
     <p>Email: <?php echo CHtml::mailto($model->user->email) ;?></p>
     <ul>
-       
-        <li><?php echo CHtml::link('Tường',array('me/me','id'=>Yii::app()->user->id),array('class'=>'is_link'));?></li>
-        <li><?php echo CHtml::link('Bạn Bè',array('friend/friend','id'=>Yii::app()->user->id),array('class'=>'is_link'));?></li>
+       <?php if ($model->user->id != Yii::app()->user->id) { ?>
+        <li><?php echo CHtml::link('Tường',array('me/me','id'=>$model->user->id),array('class'=>'is_link'));?></li>
+        <li><?php echo CHtml::link('Bạn Bè',array('friend/friend','id'=>$model->user->id),array('class'=>'is_link'));?></li>
+        <li><?php echo CHtml::link('List Video',array('video/video','id'=>$model->user->id),array('class'=>'is_link'));?></li>
+         <li><?php echo CHtml::link('Thông tin cá nhân',array('userprofiles/displayprofile','id'=>$model->user->id),array('class'=>'is_link'));?></li>
+    <?php } else {?>
+    <li><?php echo CHtml::link('Tường',array('me/me','id'=>$model->user->id),array('class'=>'is_link'));?></li>
+        <li><?php echo CHtml::link('Bạn Bè',array('friend/friend','id'=>$model->user->id),array('class'=>'is_link'));?></li>
         <li><?php echo CHtml::link('Đăng Video',array('video/create'),array('class'=>'is_link'));?></li>
-        <li><?php echo CHtml::link('My Video',array('video/video','id'=>Yii::app()->user->id),array('class'=>'is_link'));?></li>
+        <li><?php echo CHtml::link('My Video',array('video/video','id'=>$model->user->id),array('class'=>'is_link'));?></li>
        <li><?php echo CHtml::link('Cấu hình',array('security/security'),array('class'=>'is_link'));?></li>
        <li><?php echo CHtml::link('Đổi password',array('user/changepass'),array('class'=>'is_link'));?></li>
         <li><?php echo CHtml::link('Tổng số bài đăng',array('event/totalpost'),array('class'=>'is_link'));?></li>
-         <li><?php echo CHtml::link('Thông tin cá nhân',array('userprofiles/displayprofile','id'=>Yii::app()->user->id),array('class'=>'is_link'));?></li>
+         <li><?php echo CHtml::link('Thông tin cá nhân',array('userprofiles/displayprofile','id'=>$model->user->id),array('class'=>'is_link'));?></li>
         <li><?php echo CHtml::link('Thoát('.Yii::app()->user->name.')',array('site/logout'),array('class'=>'is_link'));?></li>
+    <?php }?>
     </ul>
 </div>

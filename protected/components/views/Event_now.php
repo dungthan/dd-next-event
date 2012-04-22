@@ -7,17 +7,10 @@ $function = new functions();
 <?php foreach ($model as $row):?>
 <div class="col_lastest_event clear">
     <ul class="event_time">
-		<?php $time = getdate(strtotime($row['start_time']));
-			if ($time["hours"] < 10)
-				$hour = "0".$time["hours"];
-			if ($time["minutes"] < 10)
-				$minute = "0".$time["minutes"];
-			if ($time["mday"] < 10)
-				$date = "0".$time["mday"];
-			else
-				$date = $time["mday"];
-			$current = $hour . ":" . $minute;
-			$month = $time["mon"];
+		<?php
+            $date = $function->time_date($row['start_time']);
+			$current = $function->time_hms($row['start_time']);
+			$month = $function->time_month($row['start_time']);
 		?>
         <li class="event_time_time"><?php echo $current;?></li>
         <li class="event_time_date"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/date/<?php echo $date;?>.gif" /></li>

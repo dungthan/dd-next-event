@@ -46,7 +46,7 @@ $this->widget('SimpleShare', array(
         <table>
         <tr>
             <td>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/thumbnail/<?php echo $model->thumbnail ;?>" class="clear" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/thumbnail/<?php echo $model->thumbnail ;?>" class="clear" width="200px" height="150px" />
 <?php if ($model->checkLike($model->id, Yii::app()->user->id) === false):
 $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'like-form',

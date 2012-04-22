@@ -27,11 +27,11 @@ class FriendController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','friend','searchfriend'),
+				'actions'=>array('index','view','friend','searchfriend','addfriend'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','friend','delete','search'),
+				'actions'=>array('create','update','friend','delete','search','addfriend'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -156,7 +156,7 @@ class FriendController extends Controller
      public function actionFriend($id)
      {
         $this->layout='//layouts/me';
-        $model=$this->loadModel($id);
+        $model=$this->loadModelUser($id);
         $id = Yii::app()->user->id; 
         $UserId2 = Yii::app()->user->id ;
         $CountRequest = Yii::app()->db->createCommand("SELECT COUNT(*) FROM tbl_friend WHERE  user2_id = '".$UserId2."'  AND request = 0")->queryScalar();
@@ -178,6 +178,14 @@ class FriendController extends Controller
 	public function loadModel($id)
 	{
 		$model=Friend::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
+    public function loadModelUser($id)
+	{
+		$model=User::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -205,6 +213,10 @@ class FriendController extends Controller
 			$this->render('searchfriend', array('model'=>$model));
 		}
 	}
+    
+    public function actionAddfriend(){
+        echo "hi";
+    }
     
 
 }

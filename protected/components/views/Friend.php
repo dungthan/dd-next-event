@@ -2,9 +2,10 @@
 <span class="col_title">Bạn bè</span>
 <ul class="list_mem ">
 <?php 
+if(!isset($_GET['id'])){ $YourId = Yii::app()->user->id ;}else $YourId = $_GET['id']; 
 $UserId2 = $id ;
 $model1 = Friend::model()->findAll();
-    if($UserId2 == Yii::app()->user->id){
+    if($UserId2 == $YourId){
         $Ids = Friend::model()->findAllByAttributes(array( 'user2_id'=>$UserId2,'request'=>'1'));
         foreach($Ids as $Id ){
             echo '<li>';
