@@ -2,7 +2,7 @@
 $this->breadcrumbs=array(
 	'Userprofiles'=>array('index'),
 	$model->user_id=>array('view','id'=>$model->user_id),
-	'Update',
+	'Thông tin cá nhân',
 );
 
 $this->menu=array(
@@ -12,6 +12,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Userprofiles <?php echo $model->user_id; ?></h1>
+<h1>Thay đổi thông tin cá nhân <?php echo $model->display_name; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

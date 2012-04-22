@@ -29,7 +29,7 @@
  */
 class Userprofiles extends CActiveRecord
 {
-        const TYPE_MALE = 'nam';
+    const TYPE_MALE = 'nam';
 	const TYPE_FEMALE = 'nữ';
 	const TYPE_KHAC = 'khác';
 	/**
@@ -88,21 +88,21 @@ class Userprofiles extends CActiveRecord
 	{
 		return array(
 			'user_id' => 'User',
-			'display_name' => 'Display Name',
-			'first_name' => 'First Name',
-			'last_name' => 'Last Name',
-			'company' => 'Company',
-			'lang' => 'Lang',
-			'bio' => 'Bio',
-			'bod' => 'Bod',
-			'gender' => 'Gender',
-			'phone' => 'Phone',
-			'mobile' => 'Mobile',
-			'address_line1' => 'Address Line1',
-			'address_line2' => 'Address Line2',
-			'address_line3' => 'Address Line3',
-			'yim_handle' => 'Yim Handle',
-			'skype_handle' => 'Skype Handle',
+			'display_name' => 'Tên hiện thị',
+			'first_name' => 'Họ',
+			'last_name' => 'Tên',
+			'company' => 'Nơi làm việc',
+			'lang' => 'Ngôn ngữ',
+			'bio' => 'Giới thiệu',
+			'bod' => 'Ngày sinh',
+			'gender' => 'Giới tính',
+			'phone' => 'Điện thoại',
+			'mobile' => 'Di động',
+			'address_line1' => 'Sống tại',
+			'address_line2' => 'Đến từ',
+			'address_line3' => 'Bổ sung',
+			'yim_handle' => 'Tên yahoo',
+			'skype_handle' => 'Tên Skype',
 			'avatar' => 'Avatar',
 			'facebooksite' => 'Facebooksite',
 			'update_on' => 'Update On',

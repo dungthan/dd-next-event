@@ -31,7 +31,7 @@ class EventController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','thumbnail','totalpost'),
+				'actions'=>array('create','update','thumbnail','totalpost','upload'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -402,4 +402,26 @@ class EventController extends Controller
 			'model'=>$model,
 		));
 	}
+    
+    public function actionUpload()
+{
+        Yii::import("ext.EAjaxUpload.qqFileUploader");
+        $folder = YiiBase::getPathOfAlias('webroot').'/images/thumbnail/';
+        //$folder='images/thumbnail/';// folder for uploaded files
+        $allowedExtensions = array("jpg","jpeg","gif");//array("jpg","jpeg","gif","exe","mov" and etc...
+        $sizeLimit = 1 * 1024 * 1024;// maximum file size in bytes
+        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+        
+        $result = $uploader->handleUpload($folder);
+        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+ 
+        $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
+        $fileName=$result['filename'];//GETTING FILE NAME
+        if(isset($_GET['id'])) $id=$_GET['id'];
+       $model = $this->loadModel($id);
+      Event::model()->updateByPk($model->id,array('thumbnail'=>$fileName));
+        echo $return;// it's array
+              
+        
+}
 }
