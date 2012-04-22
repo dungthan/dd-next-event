@@ -132,7 +132,7 @@ class UserController extends Controller
 			        if ($identity->errorCode == UserIdentity::ERROR_NONE)
 			        {
                         $duration = 3600*24*30;
-		                Yii::app()->user->login($identity, $duration);
+		                Yii::app()->user->login($identity,$duration);
                         User::model()->updateByPk($model->id,array('block'=>1));
 		                $this->redirect(array('userprofiles/update', 'id'=>$model->id));
 			        }

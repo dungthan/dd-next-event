@@ -2,7 +2,9 @@
 class Profiles extends CWidget{
     
     public function Profiles(){
-        $id = Yii::app()->user->id;
+        if(!isset($_GET['id'])){ $id = Yii::app()->user->id ;}
+        else $id = $_GET['id'];
+       // $id = Yii::app()->user->id;
         $model = $this->loadModel($id);
         $this->render('Profiles',array('model'=>$model));
     }

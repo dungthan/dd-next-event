@@ -4,17 +4,8 @@ $this->breadcrumbs=array(
 	$model->id,
 );
 
-$this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Create User', 'url'=>array('create')),
-    array('label'=>'ChangePass', 'url'=>array('changepass')),
-	array('label'=>'bạn bè', 'url'=>array('friend/friend', 'id'=>$model->id)),
-	array('label'=>'Delete User', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
-);
 ?>
 <!---Show message---->
-<h1>View User #<?php echo $model->username ; ?></h1>
 <?php
     Yii::app()->clientScript->registerScript(
        'myHideEffect',
@@ -43,9 +34,9 @@ if ($CountRequest == 0 ){
         	'id'=>'friend-form',
         	'enableAjaxValidation'=>false,
         )); 
-            echo $form->hiddenField($Friends,'user1_id');
-            echo $form->hiddenField($Friends,'user2_id');
-            echo CHtml::submitButton($Friends->isNewRecord ? 'Kết Bạn' : 'Kết Bạn');
+            echo $form->hiddenField($Friends,'user1_id',array('value'=>Yii::app()->user->id));
+            echo $form->hiddenField($Friends,'user2_id',array('value'=>$model->id));
+            echo CHtml::submitButton($Friends->isNewRecord ? 'Kết Bạn' : 'Kết Bạn',array('class'=>'small blue button'));
         
          $this->endWidget();
         ?>

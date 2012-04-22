@@ -7,7 +7,7 @@ $function = new functions();
 	<?php foreach ($model as $row):?>
 		<?php 
 		$time = getdate(strtotime($row['start_time']));
-		$date = "Ngày ".$time["mday"]." tháng ".$time["mon"]." năm ".$time["year"];
+		$date = $function->time_dmy($row['start_time']);
 		?>
         <div class="col_top_event">
         <?php echo CHtml::link('<img alt="" src="'.Yii::app()->request->baseUrl.'/images/thumbnail/'.$row['thumbnail'].'" width = 140px height = 70px/>', array('/event/view', 'id'=>$row['id']));?>
