@@ -24,7 +24,7 @@ class AddFriend extends CWidget{
                  $this->redirect(array('view','id'=>$model->id));
     			}
             }
-		}
+
       $this->render('AddFriend',array(
                 'model'=>$model,
                 'modelId'=>$modelId,
