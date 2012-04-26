@@ -4,10 +4,10 @@ class AddFriend extends CWidget{
     public function AddFriend(){
         $id=Yii::app()->user->id;
         $criteria = new CDbCriteria;
-		$criteria->order = "RAND()";
+	$criteria->order = "RAND()";
         $criteria->condition="id!=:Id AND id!=:Id2 AND id!=:Id3";
         $criteria->params= array(":Id"=>$id,":Id2"=>$this->checkId1($id) ,":Id3"=>$this->checkId2($id));
-		$model = User::model()->findAll($criteria);
+	$model = User::model()->findAll($criteria);
         
         $modelId = $this->loadModel($id);
         $Friends = new Friend ;
