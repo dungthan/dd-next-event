@@ -9,7 +9,7 @@
 	<?php echo CHtml::link('<img height="100" width="150" src="http://img.youtube.com/vi/'.$img_link.'/0.jpg"',
 	        array('view', 'id'=>$data->id)); ?>
 	<br />
-        <b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
+        <b><<?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->name), array('view', 'id'=>$data->id)); ?>
 	<br />
 	<b><?php echo CHtml::encode($data->getAttributeLabel('create_user_id')); ?>:</b>
